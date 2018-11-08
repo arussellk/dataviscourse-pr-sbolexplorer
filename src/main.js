@@ -1,3 +1,7 @@
-import Foo from './components/Foo.js'
+import Search from './components/Search.js'
 
-const foo = new Foo()
+const search = new Search()
+
+// temporary data loading
+search.input.value = 'green'
+search.handleInput({ target: { value: 'green' }})
