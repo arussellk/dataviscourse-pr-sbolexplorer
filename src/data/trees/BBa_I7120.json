@@ -1,1 +1,30 @@
-{"uri":"https://synbiohub.org/public/igem/BBa_I7120/1","sequence":"tccctatcagtgatagagattgacatccctatcagtgatagagatactgagcactactagagattaaagaggagaaatactagatgcgtaaaggagaagaacttttcactggagttgtcccaattcttgttgaattagatggtgatgttaatgggcacaaattttctgtcagtggagagggtgaaggtgatgcaacatacggaaaacttacccttaaatttatttgcactactggaaaactacctgttccatggccaacacttgtcactactttcggttatggtgttcaatgctttgcgagatacccagatcatatgaaacagcatgactttttcaagagtgccatgcccgaaggttatgtacaggaaagaactatatttttcaaagatgacgggaactacaagacacgtgctgaagtcaagtttgaaggtgatacccttgttaatagaatcgagttaaaaggtattgattttaaagaagatggaaacattcttggacacaaattggaatacaactataactcacacaatgtatacatcatggcagacaaacaaaagaatggaatcaaagttaacttcaaaattagacacaacattgaagatggaagcgttcaactagcagaccattatcaacaaaatactccaattggcgatggccctgtccttttaccagacaaccattacctgtccacacaatctgccctttcgaaagatcccaacgaaaagagagaccacatggtccttcttgagtttgtaacagctgctgggattacacatggcatggatgaactatacaaataataatactagaggatctgcattgtcctcttagttaaatggatataacgagcccctcctaagggctaattgcaggttcgattcctgcaggggactccatactagagccaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgttgtttgtcggtgaacgctctctactagagtcacactggctcaccttcgggtgggcctttctgcgtttata","children":[{"uri":"https://synbiohub.org/public/igem/BBa_R0040/1","sequence":"tccctatcagtgatagagattgacatccctatcagtgatagagatactgagcac"},{"uri":"https://synbiohub.org/public/igem/BBa_B0030/1","sequence":"attaaagaggagaaa"},{"uri":"https://synbiohub.org/public/igem/BBa_E0040/1","sequence":"atgcgtaaaggagaagaacttttcactggagttgtcccaattcttgttgaattagatggtgatgttaatgggcacaaattttctgtcagtggagagggtgaaggtgatgcaacatacggaaaacttacccttaaatttatttgcactactggaaaactacctgttccatggccaacacttgtcactactttcggttatggtgttcaatgctttgcgagatacccagatcatatgaaacagcatgactttttcaagagtgccatgcccgaaggttatgtacaggaaagaactatatttttcaaagatgacgggaactacaagacacgtgctgaagtcaagtttgaaggtgatacccttgttaatagaatcgagttaaaaggtattgattttaaagaagatggaaacattcttggacacaaattggaatacaactataactcacacaatgtatacatcatggcagacaaacaaaagaatggaatcaaagttaacttcaaaattagacacaacattgaagatggaagcgttcaactagcagaccattatcaacaaaatactccaattggcgatggccctgtccttttaccagacaaccattacctgtccacacaatctgccctttcgaaagatcccaacgaaaagagagaccacatggtccttcttgagtttgtaacagctgctgggattacacatggcatggatgaactatacaaataataa"},{"uri":"https://synbiohub.org/public/igem/BBa_M0100/1","sequence":"gatctgcattgtcctcttagttaaatggatataacgagcccctcctaagggctaattgcaggttcgattcctgcaggggactcca"},{"uri":"https://synbiohub.org/public/igem/BBa_B0010/1","sequence":"ccaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgttgtttgtcggtgaacgctctc"},{"uri":"https://synbiohub.org/public/igem/BBa_B0012/1","sequence":"tcacactggctcaccttcgggtgggcctttctgcgtttata"}]}
+{
+  "uri": "https://synbiohub.org/public/igem/BBa_I7120/1",
+  "sequence": "tccctatcagtgatagagattgacatccctatcagtgatagagatactgagcactactagagattaaagaggagaaatactagatgcgtaaaggagaagaacttttcactggagttgtcccaattcttgttgaattagatggtgatgttaatgggcacaaattttctgtcagtggagagggtgaaggtgatgcaacatacggaaaacttacccttaaatttatttgcactactggaaaactacctgttccatggccaacacttgtcactactttcggttatggtgttcaatgctttgcgagatacccagatcatatgaaacagcatgactttttcaagagtgccatgcccgaaggttatgtacaggaaagaactatatttttcaaagatgacgggaactacaagacacgtgctgaagtcaagtttgaaggtgatacccttgttaatagaatcgagttaaaaggtattgattttaaagaagatggaaacattcttggacacaaattggaatacaactataactcacacaatgtatacatcatggcagacaaacaaaagaatggaatcaaagttaacttcaaaattagacacaacattgaagatggaagcgttcaactagcagaccattatcaacaaaatactccaattggcgatggccctgtccttttaccagacaaccattacctgtccacacaatctgccctttcgaaagatcccaacgaaaagagagaccacatggtccttcttgagtttgtaacagctgctgggattacacatggcatggatgaactatacaaataataatactagaggatctgcattgtcctcttagttaaatggatataacgagcccctcctaagggctaattgcaggttcgattcctgcaggggactccatactagagccaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgttgtttgtcggtgaacgctctctactagagtcacactggctcaccttcgggtgggcctttctgcgtttata",
+  "children": [
+    {
+      "uri": "https://synbiohub.org/public/igem/BBa_R0040/1",
+      "sequence": "tccctatcagtgatagagattgacatccctatcagtgatagagatactgagcac"
+    },
+    {
+      "uri": "https://synbiohub.org/public/igem/BBa_B0030/1",
+      "sequence": "attaaagaggagaaa"
+    },
+    {
+      "uri": "https://synbiohub.org/public/igem/BBa_E0040/1",
+      "sequence": "atgcgtaaaggagaagaacttttcactggagttgtcccaattcttgttgaattagatggtgatgttaatgggcacaaattttctgtcagtggagagggtgaaggtgatgcaacatacggaaaacttacccttaaatttatttgcactactggaaaactacctgttccatggccaacacttgtcactactttcggttatggtgttcaatgctttgcgagatacccagatcatatgaaacagcatgactttttcaagagtgccatgcccgaaggttatgtacaggaaagaactatatttttcaaagatgacgggaactacaagacacgtgctgaagtcaagtttgaaggtgatacccttgttaatagaatcgagttaaaaggtattgattttaaagaagatggaaacattcttggacacaaattggaatacaactataactcacacaatgtatacatcatggcagacaaacaaaagaatggaatcaaagttaacttcaaaattagacacaacattgaagatggaagcgttcaactagcagaccattatcaacaaaatactccaattggcgatggccctgtccttttaccagacaaccattacctgtccacacaatctgccctttcgaaagatcccaacgaaaagagagaccacatggtccttcttgagtttgtaacagctgctgggattacacatggcatggatgaactatacaaataataa"
+    },
+    {
+      "uri": "https://synbiohub.org/public/igem/BBa_M0100/1",
+      "sequence": "gatctgcattgtcctcttagttaaatggatataacgagcccctcctaagggctaattgcaggttcgattcctgcaggggactcca"
+    },
+    {
+      "uri": "https://synbiohub.org/public/igem/BBa_B0010/1",
+      "sequence": "ccaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgttgtttgtcggtgaacgctctc"
+    },
+    {
+      "uri": "https://synbiohub.org/public/igem/BBa_B0012/1",
+      "sequence": "tcacactggctcaccttcgggtgggcctttctgcgtttata"
+    }
+  ]
+}
