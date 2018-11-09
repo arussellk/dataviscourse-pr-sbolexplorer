@@ -1,4 +1,6 @@
 export default class SearchResults {
+  container: HTMLElement | null
+
   constructor() {
     this.container = document.getElementById('search-results')
   }

@@ -1,11 +1,14 @@
-import SearchService from '../services/SearchService.js'
-import SearchResults from './SearchResults.js'
+import SearchService from '../services/SearchService'
+import SearchResults from './SearchResults'
 
 const MIN_SEARCH_LENGTH = 3
 
 export default class Search {
+  input: HTMLInputElement | null
+  searchResults: SearchResults
+
   constructor() {
-    this.input = document.getElementById('search-input')
+    this.input = (<HTMLInputElement> document.getElementById('search-input'))
     this.input.addEventListener('input', this.handleInput.bind(this))
 
     this.searchResults = new SearchResults()

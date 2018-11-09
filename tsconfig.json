@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es2015",
+    // "strict": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "outDir": "./build/",
+    "allowJs": true
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
