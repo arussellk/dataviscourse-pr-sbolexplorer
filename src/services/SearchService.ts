@@ -7,6 +7,7 @@ export default class SearchService {
       return json;
     }
     else {
+      //TODO request API call to get search result data
       return {'fully': 'loaded potato'}
     }
   }
