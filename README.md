@@ -2,6 +2,8 @@
 
 ## Start
 
+All documents (Process Book, Project Proposal, etc) are in the /documents folder. 
+
 I am using `npm` version `5.6.0` which is bunled with `node` version `8.11.2`.
 
 ```
