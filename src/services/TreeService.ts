@@ -13,10 +13,8 @@ export default class TreeService {
 
     const rootCD: S2ComponentDefinition = g.rootComponentDefinitions[0]
     if (!rootCD) {
-      return new TreeNode(uri, '', [], null)
+      return new TreeNode(uri, null, [], null, null, null, null, null, null, null)
     }
-
-    console.log('rootCD', rootCD)
 
     return this.postOrder(rootCD, null, null)
   }
@@ -24,9 +22,15 @@ export default class TreeService {
   private static postOrder(cd: S2ComponentDefinition, start: number, end: number): TreeNode {
     const uri = cd.uri
     const sequence = this.getSequence(cd)
+    const description = cd.description
+    const version = cd.version
+    const name = cd.name
+    const displayId = cd.displayId
+    const role = cd.roles[0] ||	''
+    const type = cd.type
 
     if (!cd.sequenceAnnotations.length) {
-      return new TreeNode(uri, sequence, [], [start, end])
+      return new TreeNode(uri, sequence, [], [start, end], description, version, name, displayId, role, type)
     }
 
     // there are children
@@ -44,7 +48,7 @@ export default class TreeService {
     })
     .filter(x => x !== null)
 
-    return new TreeNode(uri, sequence, children, [start, end])
+    return new TreeNode(uri, sequence, children, [start, end], description, version, name, displayId, role, type)
   }
 
   private static getSequence(cd: S2ComponentDefinition): string {

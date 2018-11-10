@@ -17,7 +17,7 @@ export default class Search {
   async handleInput(e) {
     const value = e.target.value
     if (value && value.length > MIN_SEARCH_LENGTH) {
-      const results = await SearchService.getComponents(value)
+      const results = await SearchService.getComponents(value, true)
       this.searchResults.updateSearchResults(results)
     } else {
       this.searchResults.clearSearchResults()
