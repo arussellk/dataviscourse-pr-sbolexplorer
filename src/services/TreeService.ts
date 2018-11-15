@@ -1,4 +1,6 @@
 import TreeNode from '../models/TreeNode'
+import json from '../data/trees/BBa_I7120-with-range.json'
+
 import {
   SBOL2Graph,
   S2Sequence,
@@ -8,15 +10,20 @@ import {
 } from 'sbolgraph'
 
 export default class TreeService {
-  static async createTree(uri: string): Promise<TreeNode> {
-    const g: SBOL2Graph = await SBOL2Graph.loadURL(uri)
-
-    const rootCD: S2ComponentDefinition = g.rootComponentDefinitions[0]
-    if (!rootCD) {
-      return new TreeNode(uri, null, [], null, null, null, null, null, null, null)
+  static async createTree(uri: string, mock: boolean): Promise<TreeNode>{
+    if (mock){
+      return json;
     }
+    else { 
+      const g: SBOL2Graph = await SBOL2Graph.loadURL(uri)
 
-    return this.postOrder(rootCD, null, null)
+      const rootCD: S2ComponentDefinition = g.rootComponentDefinitions[0]
+      if (!rootCD) {
+        return new TreeNode(uri, null, [], null, null, null, null, null, null, null)
+      }
+
+      return this.postOrder(rootCD, null, null)
+    }
   }
 
   private static postOrder(cd: S2ComponentDefinition, start: number, end: number): TreeNode {
