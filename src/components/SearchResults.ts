@@ -10,6 +10,7 @@ export default class SearchResults {
 
     const children = results.map(x => {
       const node = document.createElement('div')
+      node.className = 'list-group-item'
       node.innerText = x._source.description
       return node
     })
