@@ -2,7 +2,7 @@ import TreeNode from '../models/TreeNode'
 import json from '../data/trees/BBa_I7120-with-range.js'
 import * as d3 from 'd3'
 
-export default class Tree{
+export default class Tree {
   treeData: TreeNode | object
 
   constructor(data: TreeNode, mock: boolean){
@@ -12,7 +12,7 @@ export default class Tree{
     else {
       this.treeData = data
     }
-
+    console.log(this.treeData)
   }
 
   createTree(){
