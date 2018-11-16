@@ -1,6 +1,6 @@
-import TreeNode from '../models/TreeNode'
 import json from '../data/trees/BBa_I7120-with-range.js'
 import * as d3 from 'd3'
+import TreeNode from '../models/TreeNode'
 
 export default class Tree {
   treeData: TreeNode | object
@@ -13,7 +13,7 @@ export default class Tree {
       this.treeData = data
     }
     //console.log(this.treeData)
-  }
+ }
 
   createTree(){
     let treeDiv = d3.select('#tree-div') 
@@ -25,9 +25,31 @@ export default class Tree {
       .attr('y', 0);
 
     let data = d3.hierarchy(this.treeData)
-    console.log(data)
 
-    let treeMap = d3.tree().size([800, 300])
+    let treeMap = d3.tree().size([450, 550])
+    let tree = treeMap(data)
+    console.log(tree)
+
+    let treeG = treeSVG.append('g').attr('id', 'tree-group')
+    let nodes = tree.descendants()
+    let links = tree.descendants().slice(1)
+    
+    let nodeDisplay = treeG.selectAll('g')
+           .data(nodes)
+           .enter()
+           .append('g')
+    nodeDisplay.append('circle')
+          .attr('cx', (d) => d.x)
+          .attr('cy', (d) => d.y)
+          .classed('node', true)
+    nodeDisplay.append('text')
+           .attr("dy", ".35em")
+           .attr("x", function(d) { return d.children ? d.x + 13 : d.x - 13; })
+           .attr('y', (d) => d.y)
+           .classed('node', true)
+            // add check to display uri or name
+           .text((d) => (d.data['uri'])); 
+    treeG.attr('transform', 'translate(0,25)')
   }
 
 }
