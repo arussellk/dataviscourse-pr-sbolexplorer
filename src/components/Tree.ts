@@ -12,15 +12,22 @@ export default class Tree {
     else {
       this.treeData = data
     }
-    console.log(this.treeData)
+    //console.log(this.treeData)
   }
 
   createTree(){
-    let treeSVG = d3.select('#tree').append('svg')
+    let treeDiv = d3.select('#tree-div') 
+
+    let treeSVG = treeDiv.append('svg')
       .attr('height', 600)
-      .attr('width', 600)
+      .attr('width', 500)
       .attr('x', 0)
       .attr('y', 0);
+
+    let data = d3.hierarchy(this.treeData)
+    console.log(data)
+
+    let treeMap = d3.tree().size([800, 300])
   }
 
 }
