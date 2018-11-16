@@ -49,6 +49,20 @@ export default class Tree {
            .classed('node', true)
             // add check to display uri or name
            .text((d) => (d.data['uri'])); 
+
+    let linkG = treeG.append('g');
+    let linkDisplay = linkG.selectAll('path')
+            .data(links)
+            .enter()
+            .append('path')
+            .classed('link', true)
+            .attr("d", function(d) {
+               return "M" + d.x + "," + d.y
+                 + "C" + (d.x + d.parent.x) / 2 + "," + d.y
+                 + " " + (d.x + d.parent.x) / 2 + "," + d.parent.x
+                 + " " + d.parent.x + "," + d.parent.y;
+            })
+
     treeG.attr('transform', 'translate(0,25)')
   }
 

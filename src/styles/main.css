@@ -7,3 +7,10 @@ circle.node {
 text.node {
     font: 10px sans-serif;
 }
+
+.link {
+    fill: none;
+    stroke: rgb(36, 33, 33);
+    stroke-opacity: 0.5;
+    stroke-width: 3px;
+}
