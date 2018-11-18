@@ -5,14 +5,14 @@ import TreeNode from '../models/TreeNode'
 export default class Tree {
   treeData: TreeNode | object
   mock : boolean
-  div : any 
-  
-  constructor(data: TreeNode, mock: boolean){
+  div : any
+
+  constructor(data: TreeNode, mock: boolean = false){
     this.mock = mock
 
     // Define the div for the tooltip
-    this.div = d3.select("body").append("div")     
-                  .attr("class", "tooltip")                         
+    this.div = d3.select("body").append("div")
+                  .attr("class", "tooltip")
                   .style("opacity", 0)
 
     if (mock){
@@ -31,7 +31,7 @@ export default class Tree {
   }
 
   createTree(){
-    let treeDiv = d3.select('#tree-div') 
+    let treeDiv = d3.select('#tree-div')
 
     let treeSVG = treeDiv.append('svg')
       .attr('height', 1200)
@@ -75,9 +75,9 @@ export default class Tree {
                 .duration(200)
                 .style('opacity', .9)
 
-            this.div.html(this.hoverHTML(d))  
-                .style("left", (d3.event.pageX) + "px")             
-                .style("top", (d3.event.pageY - 28) + "px")        
+            this.div.html(this.hoverHTML(d))
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px")
           })
           .on('mouseout', (d) => {
             this.div.style('opacity', 0)
@@ -91,7 +91,7 @@ export default class Tree {
                 return d.data['uri']
               }
               return d.data['displayId']
-           }) 
+           })
 
     treeG.attr('transform', 'translate(0,100)')
   }
