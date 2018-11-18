@@ -14,7 +14,9 @@ import Tree from './components/Tree'
   tree.createTree()
 })()
 
-const search = new Search()
+const search = new Search((uri: string) => {
+  console.log(`uri from main: ${uri}`)
+})
 
 // temporary data loading
 search.input.value = 'green'
