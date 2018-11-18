@@ -5,9 +5,16 @@ import TreeNode from '../models/TreeNode'
 export default class Tree {
   treeData: TreeNode | object
   mock : boolean
-
+  div : any 
+  
   constructor(data: TreeNode, mock: boolean){
     this.mock = mock
+
+    // Define the div for the tooltip
+    this.div = d3.select("body").append("div")     
+                  .attr("class", "tooltip")                         
+                  .style("opacity", 0)
+
     if (mock){
       this.treeData = json
     }
@@ -16,19 +23,25 @@ export default class Tree {
     }
  }
 
-  // TODO: Try tree generation based on TreeNode object/non mock!!!
+  hoverHTML(nodeData : any){
+    let htmlName = '<b>Name: ' + nodeData.data['name']  + '</b>' + '<br/><br/>'
+    let htmlType = '<b>Type:</b> ' + nodeData.data['type'] + '<br/>'
+    let htmlVersion = '<b>Version: </b>' + nodeData.data['version']
+    return htmlName + htmlType + htmlVersion
+  }
+
   createTree(){
     let treeDiv = d3.select('#tree-div') 
 
     let treeSVG = treeDiv.append('svg')
-      .attr('height', 600)
+      .attr('height', 1200)
       .attr('width', 500)
       .attr('x', 0)
       .attr('y', 0);
 
     let data = d3.hierarchy(this.treeData)
 
-    let treeMap = d3.tree().size([450, 550])
+    let treeMap = d3.tree().size([450, 900])
     let tree = treeMap(data)
     console.log(tree)
 
@@ -56,6 +69,19 @@ export default class Tree {
           .attr('cx', (d) => d.x)
           .attr('cy', (d) => d.y)
           .classed('node', true)
+          .on('mouseover', (d) => {
+            //TODO
+            this.div.transition()
+                .duration(200)
+                .style('opacity', .9)
+
+            this.div.html(this.hoverHTML(d))  
+                .style("left", (d3.event.pageX) + "px")             
+                .style("top", (d3.event.pageY - 28) + "px")        
+          })
+          .on('mouseout', (d) => {
+            this.div.style('opacity', 0)
+          })
     nodeDisplay.append('text')
            .attr("x", function(d) { return d.x - 40 })
            .attr('y', (d) => d.y - 10)
@@ -67,8 +93,7 @@ export default class Tree {
               return d.data['displayId']
            }) 
 
-    treeG.attr('transform', 'translate(0,25)')
+    treeG.attr('transform', 'translate(0,100)')
   }
-
 }
 
