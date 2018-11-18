@@ -10,7 +10,7 @@ import TreeNode from './models/TreeNode'
 (async () => {
   // temporary tree display
   const treeData = await TreeService.createTree('https://synbiohub.org/public/igem/BBa_K1407008/1/BBa_K1407008.xml')
-  var tree = new Tree(treeData)
+  var tree = new Tree(treeData, nodeDetail.showDetailFor)
   tree.createTree()
 
   nodeDetail.showDetailFor(treeData)
@@ -21,7 +21,7 @@ nodeDetail.clearDetail()
 
 const search = new Search(async (uri: string) => {
   const treeData: TreeNode = await TreeService.createTree(uri)
-  const tree = new Tree(treeData, false)
+  const tree = new Tree(treeData, nodeDetail.showDetailFor)
   tree.createTree()
 })
 

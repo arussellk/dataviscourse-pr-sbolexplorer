@@ -7,11 +7,11 @@ export default class NodeDetail {
     this.container = document.getElementById('node-detail')
   }
 
-  clearDetail() {
+  clearDetail = () => {
     this.container.innerHTML = ''
   }
 
-  showDetailFor(treeNode: TreeNode) {
+  showDetailFor = (treeNode: TreeNode) => {
     this.container.innerHTML = `
     <div class="card card-body">
       <h2>${treeNode.name}</h2>
