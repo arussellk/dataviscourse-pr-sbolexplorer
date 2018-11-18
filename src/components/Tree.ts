@@ -4,17 +4,19 @@ import TreeNode from '../models/TreeNode'
 
 export default class Tree {
   treeData: TreeNode | object
+  mock : boolean
 
   constructor(data: TreeNode, mock: boolean){
+    this.mock = mock
     if (mock){
       this.treeData = json
     }
     else {
       this.treeData = data
     }
-    //console.log(this.treeData)
  }
 
+  // TODO: Try tree generation based on TreeNode object/non mock!!!
   createTree(){
     let treeDiv = d3.select('#tree-div') 
 
@@ -47,8 +49,12 @@ export default class Tree {
            .attr("x", function(d) { return d.children ? d.x + 13 : d.x - 13; })
            .attr('y', (d) => d.y)
            .classed('node', true)
-            // add check to display uri or name
-           .text((d) => (d.data['uri'])); 
+           .text((d) => {
+              if (this.mock){
+                return d.data['uri']
+              }
+              return d.data['name']
+           }) 
 
     let linkG = treeG.append('g');
     let linkDisplay = linkG.selectAll('path')
@@ -57,11 +63,8 @@ export default class Tree {
             .append('path')
             .classed('link', true)
             .attr("d", function(d) {
-               return "M" + d.x + "," + d.y
-                 + "C" + (d.x + d.parent.x) / 2 + "," + d.y
-                 + " " + (d.x + d.parent.x) / 2 + "," + d.parent.x
-                 + " " + d.parent.x + "," + d.parent.y;
-            })
+               return "M" + d.x + "," + d.y + ' ' + 'L' + d.parent.x + ',' + d.parent.y
+          })
 
     treeG.attr('transform', 'translate(0,25)')
   }
