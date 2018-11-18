@@ -19,7 +19,8 @@ const search = new Search(async (uri: string) => {
 })
 
 // temporary data loading
-search.input.value = 'green'
-search.handleInput({ target: { value: 'green' }})
+const SEARCH_VALUE = 'gfp'
+search.input.value = 'gfp'
+search.handleInput({ target: { value: 'gfp' }})
 
 
