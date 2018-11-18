@@ -20,7 +20,7 @@ const search = new Search(async (uri: string) => {
 
 // temporary data loading
 const SEARCH_VALUE = 'gfp'
-search.input.value = 'gfp'
-search.handleInput({ target: { value: 'gfp' }})
+search.input.value = SEARCH_VALUE
+search.handleInput({ target: { value: SEARCH_VALUE }})
 
 
