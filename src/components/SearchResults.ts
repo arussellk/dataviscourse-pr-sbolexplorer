@@ -1,8 +1,12 @@
 export default class SearchResults {
   container: HTMLElement | null
+  onClickSearchResult: (uri: string) => void
 
-  constructor() {
+  constructor(
+    onClickSearchResult: (uri: string) => void
+  ) {
     this.container = document.getElementById('search-results')
+    this.onClickSearchResult = onClickSearchResult
   }
 
   updateSearchResults(results) {
@@ -12,6 +16,7 @@ export default class SearchResults {
       const node = document.createElement('div')
       node.className = 'list-group-item'
       node.innerText = x._source.displayId + '\n' + x._source.description
+      node.onclick = this.clickSearchResult(`${x._source.subject}/${x._source.displayId}.xml`)
       return node
     })
 
@@ -23,5 +28,11 @@ export default class SearchResults {
 
   clearSearchResults() {
     this.container.innerHTML = ''
+  }
+
+  clickSearchResult(uri) {
+    return () => {
+      this.onClickSearchResult(uri)
+    }
   }
 }

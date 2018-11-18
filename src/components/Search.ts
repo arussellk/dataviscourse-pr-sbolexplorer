@@ -6,12 +6,15 @@ const MIN_SEARCH_LENGTH = 3
 export default class Search {
   input: HTMLInputElement | null
   searchResults: SearchResults
+  onClickSearchResult: (uri: string) => void
 
-  constructor() {
+  constructor(
+    onClickSearchResult: (uri: string) => void
+  ) {
     this.input = (<HTMLInputElement> document.getElementById('search-input'))
     this.input.addEventListener('input', this.handleInput.bind(this))
 
-    this.searchResults = new SearchResults()
+    this.searchResults = new SearchResults(onClickSearchResult)
   }
 
   async handleInput(e) {
