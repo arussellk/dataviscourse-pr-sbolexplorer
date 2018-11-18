@@ -6,9 +6,15 @@ export default class Tree {
   treeData: TreeNode | object
   mock : boolean
   div : any
+  onClickTreeNode: (TreeNode) => void
 
-  constructor(data: TreeNode, mock: boolean = false){
+  constructor(
+    data: TreeNode,
+    onClickTreeNode: (TreeNode) => void,
+    mock: boolean = false
+  ) {
     this.mock = mock
+    this.onClickTreeNode = onClickTreeNode
 
     // Define the div for the tooltip
     this.div = d3.select("body").append("div")
@@ -116,8 +122,10 @@ export default class Tree {
               }
               return d.data['displayId']
            })
+    nodeDisplay.on('click', (d) => {
+      this.onClickTreeNode(d.data)
+    })
 
     treeG.attr('transform', 'translate(0,100)')
   }
 }
-
