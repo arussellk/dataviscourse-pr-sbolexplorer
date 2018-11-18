@@ -36,11 +36,23 @@ export default class Tree {
     return htmlName + htmlType + htmlVersion
   }
 
+  assignGlyph(role : string){
+    // Glyphs based on role
+    switch(role){
+      case 'http://identifiers.org/so/SO:0000031': {
+        return '/glyphs/aptame-specification.png' 
+      }
+      default: {
+        console.log("No matching glyph!!??!!")
+      }
+    }
+  }
+  
   createTree(){
     let treeDiv = d3.select('#tree-div')
 
     // clear previous tree
-    treeDiv.selectAll("*").remove()
+    treeDiv.selectAll('*').remove()
 
     let treeSVG = treeDiv.append('svg')
       .attr('height', 1200)
