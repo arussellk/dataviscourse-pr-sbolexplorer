@@ -33,6 +33,9 @@ export default class Tree {
   createTree(){
     let treeDiv = d3.select('#tree-div') 
 
+    // clear previous tree
+    treeDiv.selectAll("*").remove()
+
     let treeSVG = treeDiv.append('svg')
       .attr('height', 1200)
       .attr('width', 500)
