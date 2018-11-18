@@ -35,8 +35,20 @@ export default class Tree {
     let treeG = treeSVG.append('g').attr('id', 'tree-group')
     let nodes = tree.descendants()
     let links = tree.descendants().slice(1)
-    
-    let nodeDisplay = treeG.selectAll('g')
+    let nodeG = treeG.append('g').attr('id', 'all-nodes')
+    let linkG = treeG.append('g').attr('id', 'all-links')
+
+    let linkDisplay = linkG.selectAll('g')
+          .data(links)
+          .enter()
+          .append('g')
+    linkDisplay.append('path')
+          .classed('link', true)
+          .attr("d", function(d) {
+               return "M" + d.x + "," + (d.y- 18) + ' ' + 'L' + d.parent.x + ',' + (d.parent.y-5)
+          })
+
+    let nodeDisplay = nodeG.selectAll('g')
            .data(nodes)
            .enter()
            .append('g')
@@ -45,26 +57,15 @@ export default class Tree {
           .attr('cy', (d) => d.y)
           .classed('node', true)
     nodeDisplay.append('text')
-           .attr("dy", ".35em")
-           .attr("x", function(d) { return d.children ? d.x + 13 : d.x - 13; })
-           .attr('y', (d) => d.y)
+           .attr("x", function(d) { return d.x - 40 })
+           .attr('y', (d) => d.y - 10)
            .classed('node', true)
            .text((d) => {
               if (this.mock){
                 return d.data['uri']
               }
-              return d.data['name']
+              return d.data['displayId']
            }) 
-
-    let linkG = treeG.append('g');
-    let linkDisplay = linkG.selectAll('path')
-            .data(links)
-            .enter()
-            .append('path')
-            .classed('link', true)
-            .attr("d", function(d) {
-               return "M" + d.x + "," + d.y + ' ' + 'L' + d.parent.x + ',' + d.parent.y
-          })
 
     treeG.attr('transform', 'translate(0,25)')
   }
