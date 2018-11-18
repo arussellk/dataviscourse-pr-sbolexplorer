@@ -83,13 +83,19 @@ export default class Tree {
             this.div.transition()
                 .duration(200)
                 .style('opacity', .9)
+                .style('visibility', 'visible')
 
             this.div.html(this.hoverHTML(d))
                 .style("left", (d3.event.pageX + 28) + "px")
                 .style("top", (d3.event.pageY - 28) + "px")
           })
           .on('mouseout', (d) => {
+            // Using visibility: hidden so that the tooltip does not cover nodes
+            // to the right and prevent mouseover evens on them. If you only use
+            // opacity: 0, then the tooltip will still intercept mouse events
+            // even though it is not seen by the user.
             this.div.style('opacity', 0)
+                    .style('visibility', 'hidden')
           })
     nodeDisplay.append('text')
            .attr("x", function(d) { return d.x - 40 })
