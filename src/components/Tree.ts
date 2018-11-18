@@ -34,10 +34,14 @@ export default class Tree {
     // Glyphs based on role
     switch(role){
       case 'http://identifiers.org/so/SO:0000031': {
-        return '/glyphs/aptame-specification.png' 
+        return '/glyphs/aptamer-specification.png' 
       }
+      // TODO
+      //
+      // ADD IN ALL CASES !!
       default: {
         console.log("No matching glyph!!??!!")
+        return '/glyphs/aptamer-specification.png' 
       }
     }
   }
@@ -50,13 +54,13 @@ export default class Tree {
 
     let treeSVG = treeDiv.append('svg')
       .attr('height', 1200)
-      .attr('width', 500)
+      .attr('width', 600)
       .attr('x', 0)
       .attr('y', 0);
 
     let data = d3.hierarchy(this.treeData)
 
-    let treeMap = d3.tree().size([450, 900])
+    let treeMap = d3.tree().size([550, 900])
     let tree = treeMap(data)
     console.log(tree)
 
@@ -80,26 +84,31 @@ export default class Tree {
            .data(nodes)
            .enter()
            .append('g')
-    nodeDisplay.append('circle')
-          .attr('cx', (d) => d.x)
-          .attr('cy', (d) => d.y)
-          .classed('node', true)
-          .on('mouseover', (d) => {
-            //TODO
-            this.div.transition()
-                .duration(200)
-                .style('opacity', .9)
+    nodeDisplay.append('image')
+            .attr('x', (d) => d.x - 20)
+            .attr('y', (d) => d.y - 40)
+            .attr('width', '45px')
+            .attr('height', '45px')
+            .attr('href', (d) => this.assignGlyph(d.data['role']))
+    //nodeDisplay.append('circle')
+    //      .attr('cx', (d) => d.x)
+    //      .attr('cy', (d) => d.y)
+    //      .classed('node', true)
+    //      .on('mouseover', (d) => {
+    //        this.div.transition()
+    //            .duration(200)
+    //            .style('opacity', .9)
 
-            this.div.html(this.hoverHTML(d))
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 28) + "px")
-          })
-          .on('mouseout', (d) => {
-            this.div.style('opacity', 0)
-          })
+    //        this.div.html(this.hoverHTML(d))
+    //            .style("left", (d3.event.pageX) + "px")
+    //            .style("top", (d3.event.pageY - 28) + "px")
+    //      })
+    //      .on('mouseout', (d) => {
+    //        this.div.style('opacity', 0)
+    //      })
     nodeDisplay.append('text')
-           .attr("x", function(d) { return d.x - 40 })
-           .attr('y', (d) => d.y - 10)
+           .attr("x", function(d) { return d.x - 32 })
+           .attr('y', (d) => d.y - 60)
            .classed('node', true)
            .text((d) => {
               if (this.mock){
