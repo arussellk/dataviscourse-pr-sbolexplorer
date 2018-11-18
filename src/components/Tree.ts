@@ -34,14 +34,14 @@ export default class Tree {
     let treeDiv = d3.select('#tree-div') 
 
     let treeSVG = treeDiv.append('svg')
-      .attr('height', 600)
+      .attr('height', 1200)
       .attr('width', 500)
       .attr('x', 0)
       .attr('y', 0);
 
     let data = d3.hierarchy(this.treeData)
 
-    let treeMap = d3.tree().size([450, 550])
+    let treeMap = d3.tree().size([450, 900])
     let tree = treeMap(data)
     console.log(tree)
 
@@ -93,7 +93,7 @@ export default class Tree {
               return d.data['displayId']
            }) 
 
-    treeG.attr('transform', 'translate(0,25)')
+    treeG.attr('transform', 'translate(0,100)')
   }
 }
 
