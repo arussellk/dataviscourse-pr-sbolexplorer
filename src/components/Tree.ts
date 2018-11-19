@@ -46,9 +46,45 @@ export default class Tree {
       case 'http://identifiers.org/so/SO:0001953': {
         return '/glyphs/assembly-scar.svg'
       }
-      //case: 'http://identifiers.org/so/SO:0001691': {
-      //  return '/glyphs/blunt-restriction-site-specification.png'
-      //}
+      case 'http://identifiers.org/so/SO:0001691': {
+        return '/glyphs/blunt-restriction-site-specification.png'
+      }
+      case 'http://identifiers.org/so/SO:0000316': {
+        return '/glyphs/cds.svg'
+      }
+      case 'http://identifiers.org/so/SO:0001956': {
+        return '/glyphs/protease-site.svg'
+      }
+      case 'http://identifiers.org/so/SO:000197': {
+        return '/glyphs/ribonuclease-site.svg'
+      }
+      case 'http://identifiers.org/so/SO:0001688': {
+        return '/glyphs/nuclease-site.svg'
+      }
+      case 'http://identifiers.org/so/SO:0001687': {
+        return '/glyphs/nuclease-site.svg'
+      }
+      case 'http://identifiers.org/so/SO:0001687': {
+        return '/glyphs/nuclease-site.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000804': {
+        return '/glyphs/engineered-region.svg'
+      }
+      case 'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Composite': {
+        return '/glyphs/engineered-region.svg'
+      }
+
+      case 'http://identifiers.org/so/SO:0001932': {
+        return '/glyphs/five-prime-overhang.svg'
+      }
+
+      case 'http://identifiers.org/so/SO:0001933': {
+        return '/glyphs/three-overhang.svg'
+      }
+      
+
+      
+      
       // TODO
       //
       // ADD IN ALL CASES !!
@@ -68,7 +104,7 @@ export default class Tree {
 
     let treeSVG = treeDiv.append('svg')
       .attr('height', 1200)
-      .attr('width', 900)
+      .attr('width', 850)
       .attr('x', 0)
       .attr('y', 0);
 
@@ -117,7 +153,7 @@ export default class Tree {
                this.div.style('opacity', 0)
             })
     nodeDisplay.append('text')
-           .attr("x", function(d) { return d.x - 32 })
+           .attr("x", (d) => d.x - 32)
            .attr('y', (d) => d.y - 55)
            .classed('node', true)
            .text((d) => {
