@@ -86,17 +86,73 @@ export default class Tree {
       case 'http://identifiers.org/so/SO:0001976': {
         return '/glyphs/three-sticky.svg'
       }
-      
 
-      
-      
-      // TODO
-      //
-      // ADD IN ALL CASES !!
-      // NOTE: for blunt-restriction-site, use .png ending!
+      case 'http://identifiers.org/so/SO:0000627': {
+        return '/glyphs/insulator.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000699': {
+        return '/glyphs/location-dna.svg'
+      }
+      case 'http://identifiers.org/so/SO:0001236': {
+        return '/glyphs/location-rna.svg'
+      }
+      case 'http://identifiers.org/so/SO:0001237': {
+        return '/glyphs/location-protein.svg'
+      }
+      case 'http://identifiers.org/so/SO:0001263': {
+        return '/glyphs/ncrna.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000834': {
+        return '/glyphs/ncrna.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000057': {
+        return '/glyphs/operator.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000409': {
+        return '/glyphs/operator.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000296': {
+        return '/glyphs/origin-of-replication.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000724': {
+        return '/glyphs/origin-of-transfer.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000553': {
+        return '/glyphs/polyA.svg'
+      }
+      case 'http://identifiers.org/so/SO:0005850': {
+        return '/glyphs/primer-binding-site.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000167': {
+        return '/glyphs/promoter.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000139': {
+        return '/glyphs/ribosome-entry-site.svg'
+      }
+      case 'http://identifiers.org/so/SO:0001978': {
+        return '/glyphs/signature.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000299': {
+        return '/glyphs/specific-recombination-site.svg'
+      }
+      case 'http://identifiers.org/so/SO:0001955': {
+        return '/glyphs/protein-stability-element.svg'
+      }
+      case 'http://identifiers.org/so/SO:0001546': {
+        return '/glyphs/protein-stability-element.svg'
+      }
+      case 'http://identifiers.org/so/SO:0001979': {
+        return '/glyphs/rna-stability-element.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000141': {
+        return '/glyphs/terminator.svg'
+      }
+      case 'http://identifiers.org/so/SO:0000110': {
+        return '/glyphs/replacement-glyph.svg'
+      }
       default: {
         console.log("No matching glyph!!??!!")
-        return '/glyphs/aptamer.svg' 
+        return '/glyphs/no-glyph-assigned.svg' 
       }
     }
   }
