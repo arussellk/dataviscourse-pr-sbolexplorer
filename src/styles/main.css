@@ -21,3 +21,8 @@ div.tooltip {
     border-radius: 8px;                       
 }
 
+.sequence-rect {
+    fill: white;
+    stroke-width: 1px;
+    stroke: black;
+}

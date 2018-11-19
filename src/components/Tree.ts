@@ -17,9 +17,9 @@ export default class Tree {
     this.onClickTreeNode = onClickTreeNode
 
     // Define the div for the tooltip
-    this.div = d3.select("body").append("div")
-                  .attr("class", "tooltip")
-                  .style("opacity", 0)
+    this.div = d3.select('body').append('div')
+                  .attr('class', 'tooltip')
+                  .style('opacity', 0)
 
     if (mock){
       this.treeData = json
@@ -30,27 +30,32 @@ export default class Tree {
  }
 
   hoverHTML(nodeData : any){
-    let htmlName = '<b>Name: ' + nodeData.data['name']  + '</b>' + '<br/><br/>'
+    let htmlName = '<b>Name: ' + nodeData.data['name']  + '</b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'  
+    let icon = '<image src=' + this.assignGlyph(nodeData.data['role']) + '/><br/>'// 'width=80 height=80 </image><br/><br/><br/><br/>'
     let htmlType = '<b>Type:</b> ' + nodeData.data['type'] + '<br/>'
     let htmlVersion = '<b>Version: </b>' + nodeData.data['version']
-    return htmlName + htmlType + htmlVersion
+    return htmlName + icon + htmlType + htmlVersion
   }
 
   assignGlyph(role : string){
     // Glyphs based on role
     switch(role){
       case 'http://identifiers.org/so/SO:0000031': {
-        return '/glyphs/aptamer-specification.png' 
+        return '/glyphs/aptamer.svg' 
       }
       case 'http://identifiers.org/so/SO:0001953': {
-        return '/glyphs/'
+        return '/glyphs/assembly-scar.svg'
       }
+      //case: 'http://identifiers.org/so/SO:0001691': {
+      //  return '/glyphs/blunt-restriction-site-specification.png'
+      //}
       // TODO
       //
       // ADD IN ALL CASES !!
+      // NOTE: for blunt-restriction-site, use .png ending!
       default: {
         console.log("No matching glyph!!??!!")
-        return '/glyphs/aptamer-specification.png' 
+        return '/glyphs/aptamer.svg' 
       }
     }
   }
@@ -124,6 +129,12 @@ export default class Tree {
     nodeDisplay.on('click', (d) => {
       this.onClickTreeNode(d.data)
     })
+    nodeDisplay.append('rect')
+          .attr('width', 55)
+          .attr('height', 15)
+          .attr('x', (d) => d.x - 25)
+          .attr('y', (d) => d.y + 10)
+          .classed('sequence-rect', true)
 
     treeG.attr('transform', 'translate(0,100)')
   }
