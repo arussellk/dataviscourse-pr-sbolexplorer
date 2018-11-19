@@ -42,6 +42,9 @@ export default class Tree {
       case 'http://identifiers.org/so/SO:0000031': {
         return '/glyphs/aptamer-specification.png' 
       }
+      case 'http://identifiers.org/so/SO:0001953': {
+        return '/glyphs/'
+      }
       // TODO
       //
       // ADD IN ALL CASES !!
@@ -60,13 +63,13 @@ export default class Tree {
 
     let treeSVG = treeDiv.append('svg')
       .attr('height', 1200)
-      .attr('width', 600)
+      .attr('width', 900)
       .attr('x', 0)
       .attr('y', 0);
 
     let data = d3.hierarchy(this.treeData)
 
-    let treeMap = d3.tree().size([550, 900])
+    let treeMap = d3.tree().size([850, 900])
     let tree = treeMap(data)
     console.log(tree)
 
@@ -83,7 +86,7 @@ export default class Tree {
     linkDisplay.append('path')
           .classed('link', true)
           .attr("d", function(d) {
-               return "M" + d.x + "," + (d.y- 18) + ' ' + 'L' + d.parent.x + ',' + (d.parent.y-5)
+               return "M" + d.x + "," + (d.y- 68) + ' ' + 'L' + d.parent.x + ',' + (d.parent.y+35)
           })
 
     let nodeDisplay = nodeG.selectAll('g')
@@ -91,30 +94,26 @@ export default class Tree {
            .enter()
            .append('g')
     nodeDisplay.append('image')
-            .attr('x', (d) => d.x - 20)
-            .attr('y', (d) => d.y - 40)
-            .attr('width', '45px')
-            .attr('height', '45px')
+            .attr('x', (d) => d.x - 25)
+            .attr('y', (d) => d.y - 53)
+            .attr('width', '55px')
+            .attr('height', '55px')
             .attr('href', (d) => this.assignGlyph(d.data['role']))
-    //nodeDisplay.append('circle')
-    //      .attr('cx', (d) => d.x)
-    //      .attr('cy', (d) => d.y)
-    //      .classed('node', true)
-    //      .on('mouseover', (d) => {
-    //        this.div.transition()
-    //            .duration(200)
-    //            .style('opacity', .9)
+            .on('mouseover', (d) => {
+              this.div.transition()
+                 .duration(200)
+                 .style('opacity', .9)
 
-    //        this.div.html(this.hoverHTML(d))
-    //            .style("left", (d3.event.pageX) + "px")
-    //            .style("top", (d3.event.pageY - 28) + "px")
-    //      })
-    //      .on('mouseout', (d) => {
-    //        this.div.style('opacity', 0)
-    //      })
+              this.div.html(this.hoverHTML(d))
+                 .style("left", (d3.event.pageX) + "px")
+                 .style("top", (d3.event.pageY - 25) + "px")
+            })
+            .on('mouseout', (d) => {
+               this.div.style('opacity', 0)
+            })
     nodeDisplay.append('text')
            .attr("x", function(d) { return d.x - 32 })
-           .attr('y', (d) => d.y - 60)
+           .attr('y', (d) => d.y - 55)
            .classed('node', true)
            .text((d) => {
               if (this.mock){
