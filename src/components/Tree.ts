@@ -73,13 +73,18 @@ export default class Tree {
       case 'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Composite': {
         return '/glyphs/engineered-region.svg'
       }
-
       case 'http://identifiers.org/so/SO:0001932': {
         return '/glyphs/five-prime-overhang.svg'
       }
-
       case 'http://identifiers.org/so/SO:0001933': {
         return '/glyphs/three-overhang.svg'
+      }
+      case 'http://identifiers.org/so/SO:0001975': {
+        return '/glyphs/five-prime-sticky-restriction-site.svg'
+      }
+
+      case 'http://identifiers.org/so/SO:0001976': {
+        return '/glyphs/three-sticky.svg'
       }
       
 
