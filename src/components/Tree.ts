@@ -30,8 +30,8 @@ export default class Tree {
  }
 
   hoverHTML(nodeData : any){
-    let htmlName = '<b>Name: ' + nodeData.data['name']  + '</b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'  
-    let icon = '<image src=' + this.assignGlyph(nodeData.data['role']) + '/><br/>'// 'width=80 height=80 </image><br/><br/><br/><br/>'
+    let htmlName = '<b>Name: ' + nodeData.data['name']  + '</b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'  
+    let icon = '<image src=' + this.assignGlyph(nodeData.data['role']) + '/><br/><br/><br/>'// 'width=80 height=80 </image><br/><br/><br/><br/>'
     let htmlType = '<b>Type:</b> ' + nodeData.data['type'] + '<br/>'
     let htmlVersion = '<b>Version: </b>' + nodeData.data['version']
     return htmlName + icon + htmlType + htmlVersion
@@ -82,11 +82,9 @@ export default class Tree {
       case 'http://identifiers.org/so/SO:0001975': {
         return '/glyphs/five-prime-sticky-restriction-site.svg'
       }
-
       case 'http://identifiers.org/so/SO:0001976': {
         return '/glyphs/three-sticky.svg'
       }
-
       case 'http://identifiers.org/so/SO:0000627': {
         return '/glyphs/insulator.svg'
       }
@@ -214,14 +212,39 @@ export default class Tree {
                this.div.style('opacity', 0)
             })
     nodeDisplay.append('text')
-           .attr("x", (d) => d.x - 32)
-           .attr('y', (d) => d.y - 55)
-           .classed('node', true)
+           .attr("x", function(d) {
+             if (d.parent == null){
+               return d.x - 55 
+             }
+             else {
+               return d.x - 50
+             } 
+            })
+           .attr('y', function(d) {
+             if (d.parent == null){
+              return d.y - 55
+             }
+             else {
+               return d.y - 78 
+             }
+            })
+           .classed('node', (d) => d.parent != null)
            .text((d) => {
               if (this.mock){
                 return d.data['uri']
               }
               return d.data['displayId']
+           })
+           .classed('root', (d) => d.parent == null)
+           .attr('transform', function(d) {
+              if (d.parent == null){
+                return 'rotate(0)'
+              }
+              else {
+                let x = d.x - 15
+                let y = d.y - 78
+                return 'rotate(45,' + x + ',' + y + ')'
+              }
            })
     nodeDisplay.on('click', (d) => {
       this.onClickTreeNode(d.data)

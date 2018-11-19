@@ -1,21 +1,27 @@
 text.node {
     font: 14px sans-serif;
+    font-weight: 650;
+}
+
+.root {
+    font: 18px sans-serif;
+    font-weight: 650;
 }
 
 .link {
     fill: none;
     stroke: rgb(36, 33, 33);
-    stroke-opacity: 0.5;
+    stroke-opacity: 0.3;
     stroke-width: 3px;
 }
 
 div.tooltip {   
     position: absolute;                       
     text-align: left;                   
-    width: 300px;                                      
-    height: 200px;                                 
+    width: 200px;                                      
+    height: 125px;                                 
     padding: 5px;                             
-    font: 12px sans-serif;                
+    font: 14px sans-serif;                
     background: lightsteelblue;       
     border: 0px;          
     border-radius: 8px;                       
