@@ -205,7 +205,7 @@ export default class Tree {
                  .style('opacity', .9)
 
               this.div.html(this.hoverHTML(d))
-                 .style("left", (d3.event.pageX) + "px")
+                 .style("left", (d3.event.pageX + 25) + "px")
                  .style("top", (d3.event.pageY - 25) + "px")
             })
             .on('mouseout', (d) => {
