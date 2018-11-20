@@ -15,7 +15,7 @@ export default class NodeDetail {
     this.container.innerHTML = `
     <div class="card card-body">
       <h2>${treeNode.name}</h2>
-      <p><i>${treeNode.name}</i> <br> Version ${treeNode.version}</p>
+      <p><i>${treeNode.displayId}</i> <br> Version ${treeNode.version}</p>
       <p><b>Source: </b>
         <a href="${treeNode.uri}" target="_blank">${treeNode.uri}</a>
       </p>

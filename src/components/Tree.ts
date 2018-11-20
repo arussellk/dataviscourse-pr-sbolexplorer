@@ -32,7 +32,7 @@ export default class Tree {
   hoverHTML(nodeData : any){
     let htmlName = '<b>Name: ' + nodeData.data['name']  + '</b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'  
     let icon = '<image src=' + this.assignGlyph(nodeData.data['role']) + '/><br/><br/><br/>'// 'width=80 height=80 </image><br/><br/><br/><br/>'
-    let htmlType = '<b>Type:</b> ' + nodeData.data['type'] + '<br/>'
+    let htmlType = '<b>Type:</b> ' + nodeData.data['role'] + '<br/>'
     let htmlVersion = '<b>Version: </b>' + nodeData.data['version']
     return htmlName + icon + htmlType + htmlVersion
   }
@@ -50,6 +50,9 @@ export default class Tree {
         return '/glyphs/blunt-restriction-site-specification.png'
       }
       case 'http://identifiers.org/so/SO:0000316': {
+        return '/glyphs/cds.svg'
+      }
+      case 'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Coding': {
         return '/glyphs/cds.svg'
       }
       case 'http://identifiers.org/so/SO:0001956': {
@@ -124,6 +127,9 @@ export default class Tree {
       case 'http://identifiers.org/so/SO:0000167': {
         return '/glyphs/promoter.svg'
       }
+      case 'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Regulatory': {
+        return '/glyphs/promoter.svg'
+      }
       case 'http://identifiers.org/so/SO:0000139': {
         return '/glyphs/ribosome-entry-site.svg'
       }
@@ -143,6 +149,9 @@ export default class Tree {
         return '/glyphs/rna-stability-element.svg'
       }
       case 'http://identifiers.org/so/SO:0000141': {
+        return '/glyphs/terminator.svg'
+      }
+      case 'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Terminator': {
         return '/glyphs/terminator.svg'
       }
       case 'http://identifiers.org/so/SO:0000110': {
