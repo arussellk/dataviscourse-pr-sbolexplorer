@@ -41,7 +41,7 @@ export default class Tree {
     // Glyphs based on role
     switch(role){
       case 'http://identifiers.org/so/SO:0000031': {
-        return '/glyphs/aptamer.svg' 
+        return '/glyphs/aptamer.svg'
       }
       case 'http://identifiers.org/so/SO:0001953': {
         return '/glyphs/assembly-scar.svg'
@@ -159,11 +159,11 @@ export default class Tree {
       }
       default: {
         console.log("No matching glyph!!??!!")
-        return '/glyphs/no-glyph-assigned.svg' 
+        return '/glyphs/no-glyph-assigned.svg'
       }
     }
   }
-  
+
   createTree(){
     let treeDiv = d3.select('#tree-div')
 
@@ -212,29 +212,35 @@ export default class Tree {
               this.div.transition()
                  .duration(200)
                  .style('opacity', .9)
+                 .style('visibility', 'visible')
 
               this.div.html(this.hoverHTML(d))
                  .style("left", (d3.event.pageX + 25) + "px")
                  .style("top", (d3.event.pageY - 25) + "px")
             })
             .on('mouseout', (d) => {
+               // Using visibility: hidden so that the tooltip does not cover nodes
+               // to the right and prevent mouseover evens on them. If you only use
+               // opacity: 0, then the tooltip will still intercept mouse events
+               // even though it is not seen by the user.
                this.div.style('opacity', 0)
+                       .style('visibility', 'hidden')
             })
     nodeDisplay.append('text')
            .attr("x", function(d) {
              if (d.parent == null){
-               return d.x - 55 
+               return d.x - 55
              }
              else {
                return d.x - 50
-             } 
+             }
             })
            .attr('y', function(d) {
              if (d.parent == null){
               return d.y - 55
              }
              else {
-               return d.y - 78 
+               return d.y - 78
              }
             })
            .classed('node', (d) => d.parent != null)
