@@ -30,138 +30,58 @@ export default class Tree {
  }
 
   hoverHTML(nodeData : any){
-    let htmlName = '<b>Name: ' + nodeData.data['name']  + '</b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'  
+    let htmlName = '<b>Name: ' + nodeData.data['name']  + '</b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
     let icon = '<image src="' + this.assignGlyph(nodeData.data['role']) + '"/><br/><br/><br/>'// 'width=80 height=80 </image><br/><br/><br/><br/>'
     let htmlType = '<b>Role:</b> ' + nodeData.data['role'] + '<br/>'
     let htmlVersion = '<b>Version: </b>' + nodeData.data['version']
     return htmlName + icon + htmlType + htmlVersion
   }
 
-  assignGlyph(role : string){
+  assignGlyph(role : string): string {
     // Glyphs based on role
-    switch(role){
-      case 'http://identifiers.org/so/SO:0000031': {
-        return '/glyphs/aptamer.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001953': {
-        return '/glyphs/assembly-scar.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001691': {
-        return '/glyphs/blunt-restriction-site-specification.png'
-      }
-      case 'http://identifiers.org/so/SO:0000316': {
-        return '/glyphs/cds.svg'
-      }
-      case 'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Coding': {
-        return '/glyphs/cds.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001956': {
-        return '/glyphs/protease-site.svg'
-      }
-      case 'http://identifiers.org/so/SO:000197': {
-        return '/glyphs/ribonuclease-site.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001688': {
-        return '/glyphs/nuclease-site.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001687': {
-        return '/glyphs/nuclease-site.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001687': {
-        return '/glyphs/nuclease-site.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000804': {
-        return '/glyphs/engineered-region.svg'
-      }
-      case 'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Composite': {
-        return '/glyphs/engineered-region.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001932': {
-        return '/glyphs/five-prime-overhang.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001933': {
-        return '/glyphs/three-overhang.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001975': {
-        return '/glyphs/five-prime-sticky-restriction-site.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001976': {
-        return '/glyphs/three-sticky.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000627': {
-        return '/glyphs/insulator.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000699': {
-        return '/glyphs/location-dna.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001236': {
-        return '/glyphs/location-rna.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001237': {
-        return '/glyphs/location-protein.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001263': {
-        return '/glyphs/ncrna.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000834': {
-        return '/glyphs/ncrna.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000057': {
-        return '/glyphs/operator.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000409': {
-        return '/glyphs/operator.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000296': {
-        return '/glyphs/origin-of-replication.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000724': {
-        return '/glyphs/origin-of-transfer.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000553': {
-        return '/glyphs/polyA.svg'
-      }
-      case 'http://identifiers.org/so/SO:0005850': {
-        return '/glyphs/primer-binding-site.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000167': {
-        return '/glyphs/promoter.svg'
-      }
-      case 'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Regulatory': {
-        return '/glyphs/promoter.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000139': {
-        return '/glyphs/ribosome-entry-site.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001978': {
-        return '/glyphs/signature.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000299': {
-        return '/glyphs/specific-recombination-site.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001955': {
-        return '/glyphs/protein-stability-element.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001546': {
-        return '/glyphs/protein-stability-element.svg'
-      }
-      case 'http://identifiers.org/so/SO:0001979': {
-        return '/glyphs/rna-stability-element.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000141': {
-        return '/glyphs/terminator.svg'
-      }
-      case 'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Terminator': {
-        return '/glyphs/terminator.svg'
-      }
-      case 'http://identifiers.org/so/SO:0000110': {
-        return '/glyphs/replacement-glyph.svg'
-      }
-      default: {
-        console.log("No matching glyph!!??!!")
-        return '/glyphs/no-glyph-assigned.svg'
-      }
+    const roleToGlyph = {
+      'http://identifiers.org/so/SO:0000031': '/glyphs/aptamer.svg',
+      'http://identifiers.org/so/SO:0001953': '/glyphs/assembly-scar.svg',
+      'http://identifiers.org/so/SO:0001691': '/glyphs/blunt-restriction-site-specification.png',
+      'http://identifiers.org/so/SO:0000316': '/glyphs/cds.svg',
+      'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Coding': '/glyphs/cds.svg',
+      'http://identifiers.org/so/SO:0001956': '/glyphs/protease-site.svg',
+      'http://identifiers.org/so/SO:000197': '/glyphs/ribonuclease-site.svg',
+      'http://identifiers.org/so/SO:0001688': '/glyphs/nuclease-site.svg',
+      'http://identifiers.org/so/SO:0001687': '/glyphs/nuclease-site.svg',
+      'http://identifiers.org/so/SO:0000804': '/glyphs/engineered-region.svg',
+      'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Composite': '/glyphs/engineered-region.svg',
+      'http://identifiers.org/so/SO:0001932': '/glyphs/five-prime-overhang.svg',
+      'http://identifiers.org/so/SO:0001933': '/glyphs/three-overhang.svg',
+      'http://identifiers.org/so/SO:0001975': '/glyphs/five-prime-sticky-restriction-site.svg',
+      'http://identifiers.org/so/SO:0001976': '/glyphs/three-sticky.svg',
+      'http://identifiers.org/so/SO:0000627': '/glyphs/insulator.svg',
+      'http://identifiers.org/so/SO:0000699': '/glyphs/location-dna.svg',
+      'http://identifiers.org/so/SO:0001236': '/glyphs/location-rna.svg',
+      'http://identifiers.org/so/SO:0001237': '/glyphs/location-protein.svg',
+      'http://identifiers.org/so/SO:0001263': '/glyphs/ncrna.svg',
+      'http://identifiers.org/so/SO:0000834': '/glyphs/ncrna.svg',
+      'http://identifiers.org/so/SO:0000057': '/glyphs/operator.svg',
+      'http://identifiers.org/so/SO:0000409': '/glyphs/operator.svg',
+      'http://identifiers.org/so/SO:0000296': '/glyphs/origin-of-replication.svg',
+      'http://identifiers.org/so/SO:0000724': '/glyphs/origin-of-transfer.svg',
+      'http://identifiers.org/so/SO:0000553': '/glyphs/polyA.svg',
+      'http://identifiers.org/so/SO:0005850': '/glyphs/primer-binding-site.svg',
+      'http://identifiers.org/so/SO:0000167': '/glyphs/promoter.svg',
+      'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Regulatory': '/glyphs/promoter.svg',
+      'http://identifiers.org/so/SO:0000139': '/glyphs/ribosome-entry-site.svg',
+      'http://identifiers.org/so/SO:0001978': '/glyphs/signature.svg',
+      'http://identifiers.org/so/SO:0000299': '/glyphs/specific-recombination-site.svg',
+      'http://identifiers.org/so/SO:0001955': '/glyphs/protein-stability-element.svg',
+      'http://identifiers.org/so/SO:0001546': '/glyphs/protein-stability-element.svg',
+      'http://identifiers.org/so/SO:0001979': '/glyphs/rna-stability-element.svg',
+      'http://identifiers.org/so/SO:0000141': '/glyphs/terminator.svg',
+      'http://wiki.synbiohub.org/wiki/Terms/igem#partType/Terminator': '/glyphs/terminator.svg',
+      'http://identifiers.org/so/SO:0000110': '/glyphs/replacement-glyph.svg',
     }
+
+    const maybeGlyph: string|undefined = roleToGlyph[role]
+    return maybeGlyph ? maybeGlyph : '/glyphs/no-glyph-assigned.svg'
   }
 
   createTree(){
