@@ -184,13 +184,43 @@ export default class Tree {
     nodeDisplay.on('click', (d) => {
       this.onClickTreeNode(d.data, this.assignGlyph(d.data['role']))
     })
-    nodeDisplay.append('rect')
-          .attr('width', 55)
-          .attr('height', 15)
-          .attr('x', (d) => d.x - 25)
-          .attr('y', (d) => d.y + 10)
-          .classed('sequence-rect', true)
+
+    this.drawSequences(nodeDisplay)
 
     treeG.attr('transform', 'translate(0,100)')
+  }
+
+  private drawSequences(nodeDisplay: d3.Selection<d3.BaseType, d3.HierarchyPointNode<{}>, d3.BaseType, {}>) {
+    const SEQUENCE_WIDTH = 55
+    const SEQUENCE_HEIGHT = 15
+    const X_OFFSET = -25
+    const Y_OFFSET = 10
+
+    const nodesWithChildren = nodeDisplay
+      .filter(d => (<TreeNode>d.data).children.length > 0)
+    const completeSequenceRect = nodesWithChildren
+      .append('rect')
+      .attr('width', SEQUENCE_WIDTH)
+      .attr('height', SEQUENCE_HEIGHT)
+      .attr('x', (d) => d.x+X_OFFSET)
+      .attr('y', (d) => d.y+Y_OFFSET)
+      .classed('sequence-rect', true)
+    nodesWithChildren.each((d, i, nodes) => {
+      const treeNode: TreeNode = (<TreeNode>d.data)
+      treeNode.children.forEach(child => {
+        const [start, end] = child.range
+        const scale = d3.scaleLinear()
+                        .domain([0, treeNode.sequence.length])
+                        .range([d.x+X_OFFSET, d.x+X_OFFSET+SEQUENCE_WIDTH])
+        d3.select(nodes[i])
+          .append('rect')
+          .attr('width', (d: any) => scale(end)-scale(start))
+          .attr('height', SEQUENCE_HEIGHT)
+          .attr('x', (d: any) => scale(start))
+          .attr('y', (d: any) => d.y+Y_OFFSET)
+          .attr('opacity', 0.5)
+          .attr('fill', 'rebeccapurple')
+      })
+    })
   }
 }
