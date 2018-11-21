@@ -6,11 +6,11 @@ export default class Tree {
   treeData: TreeNode | object
   mock : boolean
   div : any
-  onClickTreeNode: (TreeNode) => void
+  onClickTreeNode: (TreeNode, string) => void
 
   constructor(
     data: TreeNode,
-    onClickTreeNode: (TreeNode) => void,
+    onClickTreeNode: (TreeNode, string) => void,
     mock: boolean = false
   ) {
     this.mock = mock
@@ -32,7 +32,7 @@ export default class Tree {
   hoverHTML(nodeData : any){
     let htmlName = '<b>Name: ' + nodeData.data['name']  + '</b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'  
     let icon = '<image src="' + this.assignGlyph(nodeData.data['role']) + '"/><br/><br/><br/>'// 'width=80 height=80 </image><br/><br/><br/><br/>'
-    let htmlType = '<b>Type:</b> ' + nodeData.data['role'] + '<br/>'
+    let htmlType = '<b>Role:</b> ' + nodeData.data['role'] + '<br/>'
     let htmlVersion = '<b>Version: </b>' + nodeData.data['version']
     return htmlName + icon + htmlType + htmlVersion
   }
@@ -262,7 +262,7 @@ export default class Tree {
               }
            })
     nodeDisplay.on('click', (d) => {
-      this.onClickTreeNode(d.data)
+      this.onClickTreeNode(d.data, this.assignGlyph(d.data['role']))
     })
     nodeDisplay.append('rect')
           .attr('width', 55)

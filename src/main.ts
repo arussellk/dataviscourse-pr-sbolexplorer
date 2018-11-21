@@ -13,7 +13,7 @@ import TreeNode from './models/TreeNode'
   var tree = new Tree(treeData, nodeDetail.showDetailFor)
   tree.createTree()
 
-  nodeDetail.showDetailFor(treeData)
+  nodeDetail.showDetailFor(treeData, '/glyphs/engineered-region.svg')
 })()
 
 const nodeDetail = new NodeDetail()
