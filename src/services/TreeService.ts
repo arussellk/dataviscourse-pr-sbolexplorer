@@ -17,7 +17,9 @@ export default class TreeService {
       return new TreeNode(uri, null, [], null, null, null, null, null, null, null)
     }
 
-    return this.postOrder(rootCD, null, null)
+    const rootNode: TreeNode = this.postOrder(rootCD, null, null)
+    this.assignColors(rootNode)
+    return rootNode
   }
 
   private static postOrder(cd: S2ComponentDefinition, start: number, end: number): TreeNode {
@@ -27,7 +29,7 @@ export default class TreeService {
     const version = cd.version
     const name = cd.name
     const displayId = cd.displayId
-    const role = cd.roles[0] ||	''
+    const role = cd.roles[0] || ''
     const type = cd.type
 
     if (!cd.sequenceAnnotations.length) {
@@ -58,6 +60,27 @@ export default class TreeService {
       return maybeSequence.elements || ''
     } else {
       return ''
+    }
+  }
+
+  private static assignColors(node: TreeNode) {
+    const it = this.colorIterator()
+    node.children.forEach(child => {
+      child.color = it.next().value
+      this.assignColors(child)
+    })
+  }
+
+  private static colorIterator = function*() {
+    // Each sequence and link will be drawn using these colors.
+    // The colors start anew on the left of each node's sequence.
+    // These colors were chosen using ColorBrewer2 to be colorblind-safe
+    // and show qualitative data.
+    // http://colorbrewer2.org/#type=qualitative&scheme=Dark2&n=3
+    while (true) {
+      yield '#1b9e77'
+      yield '#d95f02'
+      yield '#7570b3'
     }
   }
 }

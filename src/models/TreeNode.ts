@@ -9,6 +9,8 @@ export default class TreeNode {
   displayId: string
   role: string
   type: string
+  // color should be assigned once the tree structure is formed
+  color: string = 'black'
 
   constructor(
     uri: string,

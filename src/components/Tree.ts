@@ -100,7 +100,6 @@ export default class Tree {
 
     let treeMap = d3.tree().size([850, 900])
     let tree = treeMap(data)
-    console.log(tree)
 
     let treeG = treeSVG.append('g').attr('id', 'tree-group')
     let nodes = tree.descendants()
@@ -114,6 +113,7 @@ export default class Tree {
           .append('g')
     linkDisplay.append('path')
           .classed('link', true)
+          .attr('stroke', d => (<TreeNode>d.data).color)
           .attr("d", function(d) {
                return "M" + d.x + "," + (d.y- 68) + ' ' + 'L' + d.parent.x + ',' + (d.parent.y+35)
           })
@@ -219,7 +219,7 @@ export default class Tree {
           .attr('x', (d: any) => scale(start))
           .attr('y', (d: any) => d.y+Y_OFFSET)
           .attr('opacity', 0.5)
-          .attr('fill', 'rebeccapurple')
+          .attr('fill', child.color)
       })
     })
   }

@@ -10,20 +10,20 @@ text.node {
 
 .link {
     fill: none;
-    stroke: rgb(36, 33, 33);
+    /* stroke color is assigned by position in the tree */
     stroke-opacity: 0.3;
     stroke-width: 3px;
 }
 
-div.tooltip {   
-    position: absolute;                       
-    text-align: left;                   
+div.tooltip {
+    position: absolute;
+    text-align: left;
     display: inline-block;
-    padding: 5px;                             
-    font: 14px sans-serif;                
-    background: lightsteelblue;       
-    border: 0px;          
-    border-radius: 8px;                       
+    padding: 5px;
+    font: 14px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
 }
 
 .sequence-rect {
