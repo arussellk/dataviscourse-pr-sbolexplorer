@@ -30,11 +30,12 @@ export default class Tree {
  }
 
   hoverHTML(nodeData : any){
-    let htmlName = '<b>Name: ' + nodeData.data['name']  + '</b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
-    let icon = '<image src="' + this.assignGlyph(nodeData.data['role']) + '"/><br/><br/><br/>'// 'width=80 height=80 </image><br/><br/><br/><br/>'
-    let htmlType = '<b>Role:</b> ' + nodeData.data['role'] + '<br/>'
-    let htmlVersion = '<b>Version: </b>' + nodeData.data['version']
-    return htmlName + icon + htmlType + htmlVersion
+    return `<b>Name: ${nodeData.data.name}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <image src="${this.assignGlyph(nodeData.data.role)}" />
+            <br /><br /><br />
+            <b>Role:</b> ${nodeData.data.role}
+            <br />
+            <b>Version: </b> ${nodeData.data.version}`
   }
 
   assignGlyph(role : string): string {
