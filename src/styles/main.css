@@ -8,13 +8,6 @@ text.node {
     font-weight: 650;
 }
 
-.link {
-    fill: none;
-    /* stroke color is assigned by position in the tree */
-    stroke-opacity: 0.3;
-    stroke-width: 3px;
-}
-
 div.tooltip {
     position: absolute;
     text-align: left;
@@ -25,6 +18,26 @@ div.tooltip {
     border: 0px;
     border-radius: 8px;
 }
+
+.link {
+    fill: none;
+    /* stroke color is assigned by position in the tree */
+    stroke-opacity: 0.5;
+    stroke-width: 3px;
+}
+
+.subsequence {
+    opacity: 0.5;
+}
+
+.subsequence.highlight {
+    opacity: 1;
+}
+
+.link.highlight {
+    stroke-opacity: 1;
+}
+
 
 .sequence-rect {
     fill: white;

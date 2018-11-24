@@ -115,6 +115,8 @@ export default class Tree {
     linkDisplay.append('path')
           .classed('link', true)
           .attr('stroke', d => (<TreeNode>d.data).color)
+          .on('mouseover', this.highlightUpstream)
+          .on('mouseout', this.removeHighlights)
           .attr("d", function(d) {
                return "M" + d.x + "," + (d.y- 68) + ' ' + 'L' + d.parent.x + ',' + (d.parent.y+35)
           })
@@ -191,7 +193,12 @@ export default class Tree {
     treeG.attr('transform', 'translate(0,100)')
   }
 
-  private drawSequences(nodeDisplay: d3.Selection<d3.BaseType, d3.HierarchyPointNode<{}>, d3.BaseType, {}>) {
+  private drawSequences(
+    nodeDisplay: d3.Selection<d3.BaseType,
+                              d3.HierarchyPointNode<{}>,
+                              d3.BaseType,
+                              {}>
+  ) {
     const SEQUENCE_WIDTH = 55
     const SEQUENCE_HEIGHT = 15
     const X_OFFSET = -25
@@ -208,20 +215,64 @@ export default class Tree {
       .classed('sequence-rect', true)
     nodesWithChildren.each((d, i, nodes) => {
       const treeNode: TreeNode = (<TreeNode>d.data)
-      treeNode.children.forEach(child => {
+      treeNode.children.forEach((child: TreeNode, j) => {
+        const correspondingD3Node = d.children[j]
         const [start, end] = child.range
         const scale = d3.scaleLinear()
                         .domain([0, treeNode.sequence.length])
                         .range([d.x+X_OFFSET, d.x+X_OFFSET+SEQUENCE_WIDTH])
-        d3.select(nodes[i])
+        const subsequenceRects = d3.select(nodes[i])
+          // correspondingD3Node is essential for proper highlighting.
+          .data([correspondingD3Node])
           .append('rect')
-          .attr('width', (d: any) => scale(end)-scale(start))
+          .classed('subsequence', true)
+          .attr('width', () => scale(end)-scale(start))
           .attr('height', SEQUENCE_HEIGHT)
-          .attr('x', (d: any) => scale(start))
-          .attr('y', (d: any) => d.y+Y_OFFSET)
-          .attr('opacity', 0.5)
+          .attr('x', () => scale(start))
+          .attr('y', () => d.y+Y_OFFSET)
           .attr('fill', child.color)
+
+        subsequenceRects.on('mouseover', this.highlightUpstream)
+        subsequenceRects.on('mouseout', this.removeHighlights)
       })
     })
+  }
+
+  private highlightUpstream(d3Node: d3.HierarchyPointNode<TreeNode>) {
+    const links = d3.select('#all-links')
+                    .selectAll('path')
+    const subsequences = d3.select('#all-nodes')
+                           .selectAll('rect.subsequence')
+
+    let src = d3Node
+    let parent = src.parent
+    while (parent !== null) {
+      // highligh link
+      links
+        .filter((d: d3.HierarchyPointNode<TreeNode>) => {
+          return d === src && d.parent === parent
+        })
+        .style('stroke-opacity', 1)
+      // highlight subsequence
+      subsequences
+        .filter((d: d3.HierarchyPointNode<TreeNode>) => {
+          return d === src && d.parent === parent
+        })
+        .style('opacity', 1)
+
+
+      // climb
+      src = parent
+      parent = parent.parent
+    }
+  }
+
+  private removeHighlights() {
+    const links = d3.select('#all-links')
+                    .selectAll('path')
+                    .style('stroke-opacity', 0.5)
+    const subsequences = d3.select('#all-nodes')
+                           .selectAll('rect.subsequence')
+                           .style('opacity', 0.5)
   }
 }
