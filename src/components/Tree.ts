@@ -100,7 +100,8 @@ export default class Tree {
     let data = d3.hierarchy(this.treeData)
 
     let treeDivWidth = document.getElementById('tree-div').offsetWidth
-    let treeMap = d3.tree().size([treeDivWidth, 900])
+    let treeDivHeight = 900 
+    let treeMap = d3.tree().size([treeDivWidth, treeDivHeight])
     let tree = treeMap(data)
 
     let treeG = treeSVG.append('g').attr('id', 'tree-group')
