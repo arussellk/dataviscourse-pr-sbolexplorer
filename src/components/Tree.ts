@@ -155,6 +155,8 @@ export default class Tree {
             .attr('height', '55px')
             .attr('href', (d) => this.assignGlyph(d.data['role']))
             .on('mouseover', (d) => {
+              this.highlightUpstream(d)
+
               this.div.transition()
                  .duration(200)
                  .style('opacity', .9)
@@ -171,6 +173,8 @@ export default class Tree {
                // even though it is not seen by the user.
                this.div.style('opacity', 0)
                        .style('visibility', 'hidden')
+
+              this.removeHighlights()
             })
     nodeDisplay.append('text')
            .attr("x", function(d) {
@@ -261,7 +265,7 @@ export default class Tree {
     })
   }
 
-  private highlightUpstream(d3Node: d3.HierarchyPointNode<TreeNode>) {
+  private highlightUpstream(d3Node: any) { 
     const links = d3.select('#all-links')
                     .selectAll('path')
     const subsequences = d3.select('#all-nodes')
