@@ -38,6 +38,19 @@ export default class Tree {
             <b>Version: </b> ${nodeData.data.version}`
   }
 
+  findDepth(root : any, depth : number){
+    if (root.children == null){
+      return 0
+    }
+
+    let result = depth+1
+
+    for (let i = 0; i < root.children.length; i ++) {
+      result = Math.max(result, this.findDepth(root.children[i], depth+1))
+    }
+    return result
+  }
+
   assignGlyph(role : string): string {
     // Glyphs based on role
     const roleToGlyph = {
@@ -99,10 +112,18 @@ export default class Tree {
 
     let data = d3.hierarchy(this.treeData)
 
-    let treeDivWidth = document.getElementById('tree-div').offsetWidth
-    let treeDivHeight = 900 
-    let treeMap = d3.tree().size([treeDivWidth, treeDivHeight])
-    let tree = treeMap(data)
+    let treeWidth = document.getElementById('tree-div').offsetWidth
+    let treeHeight = 900
+
+    // determine tree height based on tree depth
+    let treeDepth = this.findDepth(data, 0)
+    console.log(treeDepth)
+    if (treeDepth <= 1){
+      treeHeight = treeHeight/2   
+    }
+
+    let treeMap = d3.tree().size([treeWidth, treeHeight])
+    let tree = treeMap(data)    
 
     let treeG = treeSVG.append('g').attr('id', 'tree-group')
     let nodes = tree.descendants()

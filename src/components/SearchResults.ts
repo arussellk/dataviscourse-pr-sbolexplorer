@@ -32,7 +32,7 @@ export default class SearchResults {
       canvas.width = 110
       canvas.height = 40
       canvas.style.position='absolute'
-      canvas.style.left= '250px'
+      canvas.style.left= '330px'
       canvas.style.top= '0'
       canvas.style.zIndex= '100000'
 
