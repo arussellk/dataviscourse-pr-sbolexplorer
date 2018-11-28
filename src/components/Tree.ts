@@ -226,9 +226,9 @@ export default class Tree {
                               d3.BaseType,
                               {}>
   ) {
-    const SEQUENCE_WIDTH = 55
+    const SEQUENCE_WIDTH = 105
     const SEQUENCE_HEIGHT = 15
-    const X_OFFSET = -25
+    const X_OFFSET = -50
     const Y_OFFSET = 10
 
     const nodesWithChildren = nodeDisplay
