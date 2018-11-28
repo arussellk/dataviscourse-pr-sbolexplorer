@@ -40,6 +40,9 @@ export default class SearchResults {
       draw.rect(5, 5, popularityScale(x._score), 22)
       draw.fillStyle = 'lightblue'
       draw.fill()
+      draw.stroke()
+      draw.rect(5, 5, 100, 22)
+      draw.stroke()
       node.appendChild(canvas)
 
       return node
