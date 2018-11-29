@@ -104,11 +104,19 @@ export default class Tree {
     // clear previous tree
     treeDiv.selectAll('*').remove()
 
+    // treeSVG is actually a 'g' to support zoom/pan.
+    // See https://bl.ocks.org/sgruhier/50990c01fe5b6993e82b8994951e23d0
+    // for isolated example.
     let treeSVG = treeDiv.append('svg')
-      .attr('height', 1200)
-      .attr('width', 850)
+      .attr('height', 900)
+      .attr('width', '100%')
+      .classed('border rounded', true)
       .attr('x', 0)
-      .attr('y', 0);
+      .attr('y', 0)
+      .call(d3.zoom().on('zoom', () => {
+        treeSVG.attr('transform', d3.event.transform)
+      }))
+      .append('g')
 
     let data = d3.hierarchy(this.treeData)
 
@@ -119,11 +127,11 @@ export default class Tree {
     let treeDepth = this.findDepth(data, 0)
     console.log(treeDepth)
     if (treeDepth <= 1){
-      treeHeight = treeHeight/2   
+      treeHeight = treeHeight/2
     }
 
     let treeMap = d3.tree().size([treeWidth, treeHeight])
-    let tree = treeMap(data)    
+    let tree = treeMap(data)
 
     let treeG = treeSVG.append('g').attr('id', 'tree-group')
     let nodes = tree.descendants()
@@ -265,7 +273,7 @@ export default class Tree {
     })
   }
 
-  private highlightUpstream(d3Node: any) { 
+  private highlightUpstream(d3Node: any) {
     const links = d3.select('#all-links')
                     .selectAll('path')
     const subsequences = d3.select('#all-nodes')
