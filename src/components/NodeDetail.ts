@@ -23,10 +23,11 @@ export default class NodeDetail {
       <p><b>Description: </b>${treeNode.description}</p>
       <p><b>Type: </b>${treeNode.type}</p>
       <p><b>Role: </b>${treeNode.role}</p>
-      <p><b>Sequence: </b><p>
-      <div style="height:250px;width:340px;overflow:auto;">
-        ${treeNode.sequence}
-      </div>
+      <p><b>Sequence: </b>
+        <div class="card card-body" style="height:250px;overflow:auto;word-break:break-word;">
+          ${treeNode.sequence}
+        </div>
+      </p>
     </div>
     `
   }
