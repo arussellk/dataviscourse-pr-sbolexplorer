@@ -18,7 +18,7 @@ export default class NodeDetail {
       <p><i>${treeNode.displayId}</i> <br> Version ${treeNode.version}</p>
       <p><image src="${glyphPath}" align="left"></p>
       <p><b>Source: </b>
-        <a href="${treeNode.uri}" target="_blank">${treeNode.uri}</a>
+        <a href="${treeNode.uri}" target="_blank" rel="noopener">${treeNode.uri}</a>
       </p>
       <p><b>Description: </b>${treeNode.description}</p>
       <p><b>Type: </b>${treeNode.type}</p>
