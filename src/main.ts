@@ -9,7 +9,9 @@ import TreeNode from './models/TreeNode'
 
 (async () => {
   // temporary tree display
-  const treeData = await TreeService.createTree('https://synbiohub.org/public/igem/BBa_K1407008/1/BBa_K1407008.xml')
+  const COMPONENT_ID = 'BBa_I5610'
+  const TREE_URL = `https://synbiohub.org/public/igem/${COMPONENT_ID}/1/${COMPONENT_ID}.xml`
+  const treeData = await TreeService.createTree(TREE_URL)
   var tree = new Tree(treeData, nodeDetail.showDetailFor)
   tree.createTree()
 
@@ -26,7 +28,7 @@ const search = new Search(async (uri: string) => {
 })
 
 // temporary data loading
-const SEARCH_VALUE = 'gfp'
+const SEARCH_VALUE = 'rbs'
 search.input.value = SEARCH_VALUE
 search.handleInput({ target: { value: SEARCH_VALUE }})
 
