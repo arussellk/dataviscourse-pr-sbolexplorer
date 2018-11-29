@@ -43,3 +43,8 @@ div.tooltip {
     stroke-width: 1px;
     stroke: black;
 }
+
+#search-results {
+    max-height: 70vh;
+    overflow: scroll;
+}
