@@ -38,19 +38,6 @@ export default class Tree {
             <b>Version: </b> ${nodeData.data.version}`
   }
 
-  findDepth(root : any, depth : number){
-    if (root.children == null){
-      return 0
-    }
-
-    let result = depth+1
-
-    for (let i = 0; i < root.children.length; i ++) {
-      result = Math.max(result, this.findDepth(root.children[i], depth+1))
-    }
-    return result
-  }
-
   assignGlyph(role : string): string {
     // Glyphs based on role
     const roleToGlyph = {
@@ -108,7 +95,7 @@ export default class Tree {
     // See https://bl.ocks.org/sgruhier/50990c01fe5b6993e82b8994951e23d0
     // for isolated example.
     let treeSVG = treeDiv.append('svg')
-      .attr('height', 900)
+      .attr('height', '80vh')
       .attr('width', '100%')
       .classed('border rounded', true)
       .attr('x', 0)
@@ -120,17 +107,12 @@ export default class Tree {
 
     let data = d3.hierarchy(this.treeData)
 
-    let treeWidth = document.getElementById('tree-div').offsetWidth
-    let treeHeight = 900
-
-    // determine tree height based on tree depth
-    let treeDepth = this.findDepth(data, 0)
-    console.log(treeDepth)
-    if (treeDepth <= 1){
-      treeHeight = treeHeight/2
-    }
-
-    let treeMap = d3.tree().size([treeWidth, treeHeight])
+    // We can use a NODE_WIDTH smaller than SEQUENCE_WIDTH because
+    // if a node has a sequence, it has at least two children, which
+    // will push sibling sequence bars far enough away.
+    const NODE_WIDTH = 80
+    const NODE_HEIGHT = 280
+    let treeMap = d3.tree().nodeSize([NODE_WIDTH, NODE_HEIGHT])
     let tree = treeMap(data)
 
     let treeG = treeSVG.append('g').attr('id', 'tree-group')
