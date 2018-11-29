@@ -13,7 +13,7 @@ export default class SearchResults {
 
   updateSearchResults(results) {
     this.clearSearchResults()
-    
+
     let maxRelevance = results[0]._score
     let popularityScale = d3.scaleLinear()
                             .domain([0,maxRelevance])
@@ -27,14 +27,10 @@ export default class SearchResults {
 
       // relevance/PageRank rectangles
       let canvas = document.createElement('canvas')
-      //canvas.style.width='100%'
-      //canvas.style.height='100%'
       canvas.width = 110
       canvas.height = 40
-      canvas.style.position='absolute'
-      canvas.style.left= '330px'
-      canvas.style.top= '0'
-      canvas.style.zIndex= '100000'
+      canvas.style.cssFloat = 'right'
+      canvas.title = 'Relevance'
 
       let draw = canvas.getContext('2d')
       draw.rect(5, 5, popularityScale(x._score), 22)
@@ -43,7 +39,7 @@ export default class SearchResults {
       draw.stroke()
       draw.rect(5, 5, 100, 22)
       draw.stroke()
-      node.appendChild(canvas)
+      node.prepend(canvas)
 
       return node
     })
