@@ -74,13 +74,18 @@ export default class TreeService {
   private static colorIterator = function*() {
     // Each sequence and link will be drawn using these colors.
     // The colors start anew on the left of each node's sequence.
-    // These colors were chosen using ColorBrewer2 to be colorblind-safe
-    // and show qualitative data.
-    // http://colorbrewer2.org/#type=qualitative&scheme=Dark2&n=3
+    // These colors were taken from "Points of view: Color blindness" by Bang Wong
+    // https://www.nature.com/articles/nmeth.1618?WT.ec_id=NMETH-201106
+    // (Figure 2)
     while (true) {
-      yield '#1b9e77'
-      yield '#d95f02'
-      yield '#7570b3'
+      yield 'rgb(0,0,0)' // black
+      yield 'rgb(230,159,0)' // orange
+      yield 'rgb(86,180,233)' // sky blue
+      yield 'rgb(0,158,115)' // bluish green
+      yield 'rgb(240,228,66)' // yellow
+      yield 'rgb(0,114,178)' // blue
+      yield 'rgb(213,94,0)' // vermillion
+      yield 'rgb(204,121,167)' // reddish purple
     }
   }
 }
