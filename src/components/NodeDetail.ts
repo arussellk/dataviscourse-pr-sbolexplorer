@@ -8,7 +8,10 @@ export default class NodeDetail {
   }
 
   clearDetail = () => {
-    this.container.innerHTML = ''
+    this.container.innerHTML = `
+    <div class="card card-body">
+      <p>Click on a synthetic component to see more details here.</p>
+    </div>`
   }
 
   showDetailFor = (treeNode: TreeNode, glyphPath: string) => {
