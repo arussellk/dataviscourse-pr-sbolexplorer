@@ -6,6 +6,8 @@ Our visualization's website includes a usage guide and relevant links for course
 
 [SBOLExplorer Demo Video](https://youtu.be/LzFqz5S5-xc)
 
+[SBOLExplorer Proccess Book](https://github.com/arussellk/dataviscourse-pr-sbolexplorer/blob/master/documents/process_book.pdf)
+
 ## SBOL
 
 The Synthetic Biology Open Standard ([SBOL](http://sbolstandard.org/sbol-visual-specification/)) defines a data format that represents synthetic genetic building blocks, which may be combined to create genetic constructs or larger, parent synthetic genetic building blocks. This project, SBOLExplorer, aims to visualize this dataset of synthetic genetic parts as well as the inheritance relationships between them. SBOLExplorer will provide a platform to view and navigate SBOL data to give researchers a deeper understanding of genetic building block relationships, a way to explore the composition of certain genetic parts, and a more efficient discovery of their data.
