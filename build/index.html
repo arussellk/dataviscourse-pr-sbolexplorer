@@ -13,7 +13,7 @@
       <div class="col-md-12">
         <h1>SBOLExplorer - The Synthetic Biology Open Language Explorer</h1>
         <p>
-          The Synthetic Biology Open Standard <a href="http://sbolstandard.org/">(SBOL)</a> defines a data format that represents synthetic genetic building blocks, which may be combined to create genetic constructs or larger, parent synthetic genetic building blocks. 
+          The Synthetic Biology Open Standard <a href="http://sbolstandard.org/">(SBOL)</a> defines a data format that represents synthetic genetic building blocks, which may be combined to create genetic constructs or larger, parent synthetic genetic building blocks.
           This project, SBOLExplorer, aims to visualize this dataset of synthetic genetic parts as well as the inheritance relationships between them. SBOLExplorer will provide a platform to view and navigate SBOL data to give researchers a deeper understanding of genetic building block relationships, a way to explore the composition of certain genetic parts, and a more efficient discovery of their data.
         </p>
       </div>
@@ -53,16 +53,18 @@
         <h2>Visualization</h2>
       </div>
       <div id="search" class="col-md-3">
-        <div class="form-group">
-          <label for="search-input">Search</label>
-          <input id="search-input" class="form-control" type="text" />
+        <div class="border rounded">
+          <div class="form-group col-sm-12 ">
+            <label for="search-input" class="mt-2">Search</label>
+            <input id="search-input" class="form-control" type="text" />
+          </div>
+          <div id="search-results" class="list-group"></div>
         </div>
-        <div id="search-results" class="list-group"></div>
       </div>
       <div id="tree-div" class="col-md-6"></div>
       <div id="node-detail" class="col-md-3"></div>
     </div>
   </div>
-  <script src="bundle.js"></script>
+  <script src="bundle.js?v=1"></script>
 </body>
 </html>

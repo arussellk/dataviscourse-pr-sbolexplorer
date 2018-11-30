@@ -21,7 +21,7 @@ export default class SearchResults {
 
     const children = results.map(x => {
       const node = document.createElement('div')
-      node.className = 'list-group-item py-1'
+      node.className = 'list-group-item py-1 border-left-0 border-right-0'
       node.innerText = x._source.displayId + '\n' + x._source.description
       node.onclick = this.clickSearchResult(`${x._source.subject}/${x._source.displayId}.xml`)
 

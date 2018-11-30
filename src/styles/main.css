@@ -46,5 +46,5 @@ div.tooltip {
 
 #search-results {
     max-height: 70vh;
-    overflow: scroll;
+    overflow-y: auto;
 }
