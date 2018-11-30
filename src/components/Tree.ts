@@ -232,28 +232,26 @@ export default class Tree {
       .attr('x', (d) => d.x+X_OFFSET)
       .attr('y', (d) => d.y+Y_OFFSET)
       .classed('sequence-rect', true)
-    nodesWithChildren.each((d, i, nodes) => {
-      const treeNode: TreeNode = (<TreeNode>d.data)
-      treeNode.children.forEach((child: TreeNode, j) => {
-        const correspondingD3Node = d.children[j]
-        const [start, end] = child.range
-        const scale = d3.scaleLinear()
-                        .domain([0, treeNode.sequence.length])
-                        .range([d.x+X_OFFSET, d.x+X_OFFSET+SEQUENCE_WIDTH])
-        const subsequenceRects = d3.select(nodes[i])
-          // correspondingD3Node is essential for proper highlighting.
-          .data([correspondingD3Node])
-          .append('rect')
-          .classed('subsequence', true)
-          .attr('width', () => scale(end)-scale(start))
-          .attr('height', SEQUENCE_HEIGHT)
-          .attr('x', () => scale(start))
-          .attr('y', () => d.y+Y_OFFSET)
-          .attr('fill', child.color)
 
-        subsequenceRects.on('mouseover', this.highlightUpstream)
-        subsequenceRects.on('mouseout', this.removeHighlights)
-      })
+    const nodesWithParents = nodeDisplay
+      .filter(d => d.parent !== null)
+    nodesWithParents.each((d, i, nodes) => {
+      const treeNode = (<TreeNode>d.data)
+      const parentTreeNode = (<TreeNode>d.parent.data)
+      const [start, end] = treeNode.range
+      const scale = d3.scaleLinear()
+                      .domain([0, parentTreeNode.sequence.length])// parent
+                      .range([d.parent.x+X_OFFSET, d.parent.x+X_OFFSET+SEQUENCE_WIDTH])
+      const subsequenceRect = d3.select(nodes[i])
+        .append('rect')
+        .classed('subsequence', true)
+        .attr('width', () => scale(end) - scale(start))
+        .attr('height', SEQUENCE_HEIGHT)
+        .attr('x', () => scale(start))
+        .attr('y', () => d.parent.y + Y_OFFSET)
+        .attr('fill', treeNode.color)
+      subsequenceRect.on('mouseover', this.highlightUpstream)
+      subsequenceRect.on('mouseout', this.removeHighlights)
     })
   }
 
