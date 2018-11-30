@@ -100,11 +100,11 @@ export default class Tree {
       .classed('border rounded', true)
       .attr('x', 0)
       .attr('y', 0)
-      .call(d3.zoom().on('zoom', () => {
+      .call(d3.zoom()
+      .on('zoom', () => {
         treeSVG.attr('transform', d3.event.transform)
       }))
       .append('g')
-      .attr('transform', 'translate(300,250)') // center root node in vis
 
     let data = d3.hierarchy(this.treeData)
 
@@ -116,7 +116,10 @@ export default class Tree {
     let treeMap = d3.tree().nodeSize([NODE_WIDTH, NODE_HEIGHT])
     let tree = treeMap(data)
 
-    let treeG = treeSVG.append('g').attr('id', 'tree-group')
+    let treeG = treeSVG
+      .append('g')
+      .attr('id', 'tree-group')
+      .attr('transform', 'translate(300, 250)') // center root node in vis
     let nodes = tree.descendants()
     let links = tree.descendants().slice(1)
     let nodeG = treeG.append('g').attr('id', 'all-nodes')
