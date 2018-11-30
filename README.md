@@ -13,16 +13,16 @@ Our visualization's website includes a usage guide and any relevant information 
 SBOLExplorer is written in TypeScript. 
 
 #### Miscellaneous Files:
-`/documents` includes the Process Book and Peer Evaluation documents.
-`/build` includes our `html` file, SVG glyphs used in our visualization, and necessary files for the website's build. 
+`/documents` includes the Process Book and Peer Evaluation documents.<br/>
+`/build` includes our `html` file, SVG glyphs used in our visualization, and necessary files for the website's build.<br/>
 `/src/data` includes our data files. The website gets tree data from a library call, but the search uses the files in       `/data/searchResults` as there's no public endpoint for search data. 
 
 #### Implementation Code: 
-`/src/components` includes all implementation for the visualization's front end (search, tree, hover box, and information panel).
-`/src/services` includes code that fetches and processes tree and search result data.
-`/src/models` includes our data model for trees/genetic parts.
-`/src/styles` includes our css file.
-`/src/main.ts` is the file where all other functions are called and all data is passed through its code. 
+`/src/components` includes all implementation for the visualization's front end (search, tree, hover box, and information panel).<br/>
+`/src/services` includes code that fetches and processes tree and search result data.<br/>
+`/src/models` includes our data model for trees/genetic parts.<br/>
+`/src/styles` includes our css file.<br/>
+`/src/main.ts` is the file where all other functions are called and all data is passed through its code.<br/> 
 
 ## Start From Source
 
