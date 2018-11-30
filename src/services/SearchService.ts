@@ -22,7 +22,7 @@ export default class SearchService {
 
     if (mock){
       return json.hits
-             .filter(x => /^https:\/\/synbiohub\.org\/public/.test(x._source.subject))
+             .filter(x => /^https:\/\/synbiohub\.org\/public\/igem/.test(x._source.subject))
              .slice(0, 10);
     }
     else {

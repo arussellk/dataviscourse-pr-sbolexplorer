@@ -2,6 +2,23 @@ export default
 {
   "hits": [
     {
+      "_id": "96804",
+      "_index": "part",
+      "_score": 0.0179396,
+      "_source": {
+        "description": "Elowitz Repressilator: QPI design",
+        "displayId": "BBa_I5610",
+        "graph": "https://synbiohub.org/public",
+        "keywords": "BBa I5610",
+        "name": "BBa_I5610",
+        "pagerank": 1.6663675397392176e-06,
+        "subject": "https://synbiohub.org/public/igem/BBa_I5610/1",
+        "type": "http://sbols.org/v2#ComponentDefinition",
+        "version": "1"
+      },
+      "_type": "part"
+    },
+    {
       "_id": "32448",
       "_index": "part",
       "_score": 0.0094141355,
@@ -21,7 +38,7 @@ export default
     {
       "_id": "83267",
       "_index": "part",
-      "_score": 1.813064e-05,
+      "_score": 1.813064e-03,
       "_source": {
         "description": "RFC12 Elowitz RBS",
         "displayId": "BBa_J70591",
@@ -36,26 +53,9 @@ export default
       "_type": "part"
     },
     {
-      "_id": "34902",
-      "_index": "part",
-      "_score": 1.4247373e-05,
-      "_source": {
-        "description": "RBS (Elowitz 1999) -- defines RBS efficiency",
-        "displayId": "igem_BBa_B0034",
-        "graph": "https://synbiohub.org/public",
-        "keywords": "igem BBa B0034",
-        "name": "BBa_B0034",
-        "pagerank": 2.227436549772364e-06,
-        "subject": "https://synbiohub.org/public/test/igem_BBa_B0034/1",
-        "type": "http://sbols.org/v2#ComponentDefinition",
-        "version": "1"
-      },
-      "_type": "part"
-    },
-    {
       "_id": "57723",
       "_index": "part",
-      "_score": 1.361359e-05,
+      "_score": 1.361359e-03,
       "_source": {
         "description": "Standard Elowitz Repressilator with degradation tag",
         "displayId": "BBa_I724002",
@@ -64,23 +64,6 @@ export default
         "name": "BBa_I724002",
         "pagerank": 2.265655359843433e-06,
         "subject": "https://synbiohub.org/public/igem/BBa_I724002/1",
-        "type": "http://sbols.org/v2#ComponentDefinition",
-        "version": "1"
-      },
-      "_type": "part"
-    },
-    {
-      "_id": "96804",
-      "_index": "part",
-      "_score": 1.179396e-05,
-      "_source": {
-        "description": "Elowitz Repressilator: QPI design",
-        "displayId": "BBa_I5610",
-        "graph": "https://synbiohub.org/public",
-        "keywords": "BBa I5610",
-        "name": "BBa_I5610",
-        "pagerank": 1.6663675397392176e-06,
-        "subject": "https://synbiohub.org/public/igem/BBa_I5610/1",
         "type": "http://sbols.org/v2#ComponentDefinition",
         "version": "1"
       },
