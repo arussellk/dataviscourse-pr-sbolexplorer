@@ -104,6 +104,7 @@ export default class Tree {
         treeSVG.attr('transform', d3.event.transform)
       }))
       .append('g')
+      .attr('transform', 'translate(300,250)') // center root node in vis
 
     let data = d3.hierarchy(this.treeData)
 
@@ -206,8 +207,6 @@ export default class Tree {
     })
 
     this.drawSequences(nodeDisplay)
-
-    treeG.attr('transform', 'translate(0,100)')
   }
 
   private drawSequences(
