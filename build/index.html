@@ -13,7 +13,7 @@
       <div class="col-md-6">
         <h1>SBOLExplorer - The Synthetic Biology Open Language Explorer</h1>
         <p>
-          SBOLExplorer is a visualization of genetic components using the Synthetic Biology Open Language (<a href="http://sbolstandard.org/">SBOL</a>).
+          SBOLExplorer is a visualization of synthetic genetic components using the Synthetic Biology Open Language (<a href="http://sbolstandard.org/">SBOL</a>).
 		  SBOL defines a data format that represents synthetic genetic parts that researchers can use as DNA building blocks to create genetic constructs or larger synthetic genetic components.
           SBOLExplorer visualizes this dataset of synthetic genetic parts as well as the inheritance relationships between them.
         </p>
@@ -23,14 +23,30 @@
       <div class="col-md-6">
         <h2>About SBOL and SBOLExplorer</h2>
         <p>
-          TODO pictures of the vis and what they mean in SBOL.
-          Keep it simple and understandable to someone who has never seen our vis.
-          explanation
-          what is SBOLExplorer?
-          what is a component?
-          what do glyphs mean?
-          what do subsequences mean?
-        </p>
+		  Here are some brief explanations of the components used in this visualization:
+		  </br></br>
+		  <img src="/explanationPics/geneticPart.jpg" alt="SBOL Genetic Component" style="width:125px;height:100px;">
+		  <img src="/explanationPics/geneticPart1.jpg" alt="SBOL Genetic Component" style="width:100px;height:150px;"> 
+		  <img src="/explanationPics/geneticPart2.jpg" alt="SBOL Genetic Component" style="width:100px;height:150px;"> 		 
+		  </br>
+          All of the above are glyphs that represent synthetic genetic parts. Each synthetic genetic part has a glyph assigned to it by the <a href="http://sbolstandard.org/visual/glyphs/">SBOL standard</a>. 
+		  The nodes in our tree represent genetic parts so each node has its own corresponding glyph.</br>
+		  For example: the full data for the glyph titled "BBa_15610" is found <a href="https://synbiohub.org/public/igem/BBa_I5610/1">here</a>.
+		  </br>
+		  </br>
+          <img src="/explanationPics/sequenceBar.jpg" alt="DNA Sequence Rect" style="width:150px;height:350x;">
+		  </br>
+          The rectangular bar under each node's glyph is a visualization of the genetic part's DNA sequence, it's colored according to where the children nodes’ DNA sequences exist in the parent node’s DNA sequence. </br>
+		  Any white space indicates areas where the DNA codons in the DNA sequence are not any defined genetic part and when the DNA sequences of children overlap in the parent sequence, the colors overlap.</br>
+		  The edges are correspondingly color coded to show which children comprise which part. </br>
+		  For example: The genetic part "BBa_B0015" is comprised of 2 children genetic parts ("B0010" and "BBa_B0012"), and "B0010"is in the first portion of "BBa_B0015"'s DNA sequence and "BBa_B0012" is in the latter portion of "BBa_B0015"'s DNA sequence. 
+		  </br>
+		  </br>
+		  <img src="/explanationPics/fullRelevancebar.jpg" alt="Search Result Relevance Bar" style="width:275px;height:65px;">
+		  <img src="/explanationPics/lessRelevantbar.jpg" alt="Search Result Relevance Bar" style="width:350px;height:80px;">
+		  </br>
+          Each search result has a rectangular bar that shows the result's relevance, or it’s PageRank, scaled comparatively to the other results. This relevance is assigned by the <a href="https://synbiohub.org/">SynBioHub</a> database of genetic parts.
+		</p>
       </div>
     </div>
     <div class="row">
